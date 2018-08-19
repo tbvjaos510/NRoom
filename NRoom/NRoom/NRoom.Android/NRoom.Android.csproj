@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AE74461A-917C-4C64-9C90-B6587B18929B}</ProjectGuid>
+    <ProjectGuid>{9D7AEC28-7C4E-4169-999A-A1C1D7FBDFB4}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{c9e5eea5-ca05-42a1-839b-61506e0a37df}</TemplateGuid>
     <OutputType>Library</OutputType>
@@ -93,7 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NRoom\NRoom.csproj">
-      <Project>{99F0C42A-6299-4DC9-A942-B74DF55E7F4B}</Project>
+      <Project>{4D4C85AF-A565-4666-8D36-BD9DD2A55068}</Project>
       <Name>NRoom</Name>
     </ProjectReference>
   </ItemGroup>
