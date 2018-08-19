@@ -5,9 +5,11 @@
              x:Class="NRoom.MainPage">
 
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
+        <Label Text="아이디" 
+           HorizontalOptions="Fill"
+           VerticalOptions="CenterAndExpand" />
+        <Label Text="비밀번호" 
+           HorizontalOptions="Fill"
            VerticalOptions="CenterAndExpand" />
     </StackLayout>
 
