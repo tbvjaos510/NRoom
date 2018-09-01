@@ -137,9 +137,25 @@ class Home {
 
 class Air {
     static get airKoreaAPI() { return "http://openapi.airkorea.or.kr/openapi/services/rest/" }
+    /**
+     * 시군구별 실시간 평균대기 농도 조회 URL
+     * @param {String} sido 시 이름  
+     * @param {String} searchCondition 검색할 범위
+     * @param {number} rows 찾을 값의 갯수
+     */
     static getCtprvnList(sido, searchCondition, rows) {
         return this.airKoreaAPI + `ArpltnInforInqireSvc/getCtprvnMesureSidoLIst?sidoName=${encodeURIComponent(sido)}&searchCondition=${searchCondition}&pageNo=1&numOfRows=${rows}&ServiceKey=${apikey}`
     }
+
+    /**
+     * 시도별 실시간 측정정보 조회 URL
+     * @param {String}} sido 시 이름
+     */
+    static getCtprvnRltmMesureDnsty(sido){
+        return this.airKoreaAPI + `ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?sidoName=${encodeURIComponent(sido)}&pageNo=1&numOfRows=10&ServiceKey=${apikey}&ver=1.3`
+    }
+
+    
 
 }
 module.exports.Home = Home

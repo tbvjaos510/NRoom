@@ -7,6 +7,7 @@ app.get('/', function (req, res) {
 })
 
 app.use("/Home", require('./route/home'))
+app.use("/Air", require('./route/Air'))
 
 app.listen(80, function () {
     console.log("Server On 80 Port")
