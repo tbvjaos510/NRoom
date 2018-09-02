@@ -31,9 +31,9 @@
 
         <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" BackgroundColor="#222d47">
             <Grid.RowDefinitions>
-                <RowDefinition Height="44*" />
-                <RowDefinition Height="50*" />
-                <RowDefinition Height="6*" />
+                <RowDefinition Height="40*" />
+                <RowDefinition Height="36*" />
+                <RowDefinition Height="24*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="7*"/>
@@ -47,8 +47,8 @@
             <Label Grid.Row="0" Grid.Column="1" Margin="0,20,0,0"
                    Text="여기만방" FontSize="26" TextColor="White"/>
             <Frame Grid.Row="1" Grid.Column="1">
-                <StackLayout x:Name="layoutMap"  
-                     VerticalOptions="Center">
+                <StackLayout x:Name="layoutMap" 
+                             VerticalOptions="Center">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Map_Tapped"></TapGestureRecognizer>
                     </StackLayout.GestureRecognizers>
@@ -59,7 +59,7 @@
             </Frame>
             <Frame Grid.Row="1" Grid.Column="2">
                 <StackLayout x:Name="layoutList" 
-                     VerticalOptions="Center">
+                             VerticalOptions="Center">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="List_Tapped"></TapGestureRecognizer>
                     </StackLayout.GestureRecognizers>
