@@ -16,6 +16,7 @@ using Com.Google.Maps.Android.Clustering;
 using static Com.Google.Maps.Android.Clustering.ClusterManager;
 using System.Collections.Generic;
 using Com.Google.Maps.Android.Clustering.Algo;
+using Android.Locations;
 
 namespace NRoom.Droid
 {
@@ -54,6 +55,12 @@ namespace NRoom.Droid
                     addMarker(new LatLng(Java.Lang.Math.Random()/10 + 35, Java.Lang.Math.Random()/10 + 128));
 
             }
+        }
+        private Address GetAddress(string name)
+        {
+            Geocoder geocoder = new Geocoder(this);
+            List<Address> address = geocoder.GetFromLocationName(name, 1) as List<Address>;
+            return address[0];
         }
         private void InitMap()
         {
