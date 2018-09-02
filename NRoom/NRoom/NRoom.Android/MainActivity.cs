@@ -15,6 +15,7 @@ using Com.Google.Maps.Android.Data;
 using Com.Google.Maps.Android.Clustering;
 using static Com.Google.Maps.Android.Clustering.ClusterManager;
 using System.Collections.Generic;
+using Com.Google.Maps.Android.Clustering.Algo;
 
 namespace NRoom.Droid
 {
@@ -45,10 +46,12 @@ namespace NRoom.Droid
                 
                 clusterManager.SetOnClusterClickListener(this);
                 clusterManager.SetOnClusterItemClickListener(this);
+                clusterManager.Algorithm = new GridBasedAlgorithm();
+                clusterManager.Renderer = new TClusterRenderer(this, map, clusterManager);
                 map.SetOnCameraIdleListener(clusterManager);
                 map.SetOnMarkerClickListener(clusterManager);
-                for (int i = 0; i < 1000; i++)
-                    addMarker(new LatLng(Java.Lang.Math.Random() + 35, Java.Lang.Math.Random() + 128));
+                for (int i = 0; i < 500; i++)
+                    addMarker(new LatLng(Java.Lang.Math.Random()/10 + 35, Java.Lang.Math.Random()/10 + 128));
 
             }
         }
