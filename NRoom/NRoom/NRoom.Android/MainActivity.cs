@@ -1,30 +1,90 @@
 ﻿using System;
 
 using Android.App;
-using Android.Support.V7.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-using Java.Lang;
 using Android.Util;
 using Android.Gms.Maps;
+using Android.Gms.Maps.Model;
+using Android.Graphics;
+using Android.Content;
+using Com.Google.Maps.Android.Data;
+using Com.Google.Maps.Android.Clustering;
+using static Com.Google.Maps.Android.Clustering.ClusterManager;
+using System.Collections.Generic;
 
 namespace NRoom.Droid
 {
-    [Activity(Label = "NewMapApp", MainLauncher = true, Icon ="@mipmap/icon", Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation )]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    [Activity(Label = "NewMapApp", MainLauncher = true)]
+    public class MainActivity : Activity, IOnMapReadyCallback, IOnClusterClickListener, IOnClusterItemClickListener
     {
-        internal static MainActivity Instance { get; private set; }
+        GoogleMap map;
+        MapFragment mapFragment;
+        ClusterManager clusterManager;
+        public void addMarker(LatLng location)
+        {
+            clusterManager.AddItem(new Home(location));
+        }
+
+        public void OnMapReady(GoogleMap googleMap)
+        {
+            map = googleMap;
+
+            if (map != null)
+            {
+                LatLng location = new LatLng(35.863612, 128.574671);
+                CameraPosition.Builder builder = CameraPosition.InvokeBuilder();
+                builder.Target(location);
+                builder.Zoom(18);
+                map.MoveCamera(CameraUpdateFactory.NewCameraPosition(builder.Build()));
+
+                clusterManager = new ClusterManager(this, map);
+                
+                clusterManager.SetOnClusterClickListener(this);
+                clusterManager.SetOnClusterItemClickListener(this);
+                map.SetOnCameraIdleListener(clusterManager);
+                map.SetOnMarkerClickListener(clusterManager);
+                for (int i = 0; i < 1000; i++)
+                    addMarker(new LatLng(Java.Lang.Math.Random() + 35, Java.Lang.Math.Random() + 128));
+
+            }
+        }
+        private void InitMap()
+        {
+            mapFragment = FragmentManager.FindFragmentByTag("map") as MapFragment;
+            if (mapFragment == null)
+            {
+                GoogleMapOptions mapOptions = new GoogleMapOptions()
+                .InvokeMapType(GoogleMap.MapTypeNormal)
+                .InvokeZoomControlsEnabled(false)
+                .InvokeCompassEnabled(true);
+                FragmentTransaction fragTx = FragmentManager.BeginTransaction();
+                mapFragment = MapFragment.NewInstance(mapOptions);
+                fragTx.Add(Resource.Id.map, mapFragment, "map");
+                fragTx.Commit();
+            }
+            mapFragment.GetMapAsync(this);
+        }
         protected override void OnCreate(Bundle bundle)
         {
-            TabLayoutResource = Resource.Layout.Tabbar;
-            ToolbarResource = Resource.Layout.Toolbar;
             base.OnCreate(bundle);
-            Instance = this;
-            Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new App());
+            InitMap();
+            SetContentView(Resource.Layout.main);
+        }
+
+        public bool OnClusterClick(ICluster cluster)
+        {
+            Toast.MakeText(this, cluster.Items.Count + " items in cluster", ToastLength.Short).Show();
+            return false;
+        }
+
+        public bool OnClusterItemClick(Java.Lang.Object marker)
+        {
+            Toast.MakeText(this, "Marker clicked", ToastLength.Short).Show();
+            return false;
         }
     }
 }
