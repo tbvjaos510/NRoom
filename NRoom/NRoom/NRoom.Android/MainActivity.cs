@@ -19,8 +19,12 @@ using Com.Google.Maps.Android.Clustering.Algo;
 
 namespace NRoom.Droid
 {
-    [Activity(Label = "NewMapApp", MainLauncher = true)]
-    public class MainActivity : Activity, IOnMapReadyCallback, IOnClusterClickListener, IOnClusterItemClickListener
+    [Activity(Label = "Phoneword",
+              Icon = "@mipmap/icon",
+              Theme = "@style/MainTheme",
+              MainLauncher = true,
+              ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity, IOnMapReadyCallback, IOnClusterClickListener, IOnClusterItemClickListener
     {
         GoogleMap map;
         MapFragment mapFragment;
@@ -71,11 +75,16 @@ namespace NRoom.Droid
             }
             mapFragment.GetMapAsync(this);
         }
+        internal static MainActivity Instance { get; private set; }
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            InitMap();
-            SetContentView(Resource.Layout.main);
+            Instance = this;
+            global::Xamarin.Forms.Forms.Init(this, bundle);
+           
+            LoadApplication(new App());
+         //   InitMap();
+         //   SetContentView(Resource.Layout.main);
         }
 
         public bool OnClusterClick(ICluster cluster)
