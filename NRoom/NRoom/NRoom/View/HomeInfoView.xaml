@@ -6,8 +6,8 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="10*" />
-                <RowDefinition Height="45*" />
-                <RowDefinition Height="45*" />
+                <RowDefinition Height="40*" />
+                <RowDefinition Height="50*" />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -37,12 +37,30 @@
                         <Label Text="깨끗하고 넓은 원룸" HorizontalTextAlignment="Center" TextColor="Black" />
                         <Label Text="_" HorizontalTextAlignment="Center" TextColor="Gray"/>
                         <Label Text="월세 1억/35" HorizontalTextAlignment="Center" TextColor="Orange" FontSize="28"/>
-                        <Frame WidthRequest="120" HeightRequest="18" HorizontalOptions="Center">
+                        <Frame WidthRequest="110" HeightRequest="24" HorizontalOptions="Center">
                             <Label Text="등록번호 : 12572628" HorizontalTextAlignment="Center" FontSize="12"/>
                         </Frame>
-                        <Grid>
-                            
+                        <Grid Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40*" />
+                                <ColumnDefinition Width="20*" />
+                                <ColumnDefinition Width="40*" />
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Column="0">
+                                <Label Text="33.06m²/10P" TextColor="Black" HorizontalTextAlignment="Center" FontSize="14"/>
+                                <Label Text="전용 면적" TextColor="Gray" HorizontalTextAlignment="Center" FontSize="10"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1">
+                                <Label Text="5만원" TextColor="Black" HorizontalTextAlignment="Center" FontSize="14"/>
+                                <Label Text="관리비" TextColor="Gray" HorizontalTextAlignment="Center" FontSize="10"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="2">
+                                <Label Text="오픈형 원룸" TextColor="Black" HorizontalTextAlignment="Center" FontSize="14"/>
+                                <Label Text="구조" TextColor="Gray" HorizontalTextAlignment="Center" FontSize="10"/>
+                            </StackLayout>
                         </Grid>
+                        <Label Text="미세먼지가 적은 청결한 동네" HorizontalTextAlignment="Center" 
+                               TextColor="Black" FontSize="22" VerticalOptions="EndAndExpand"/>
                     </StackLayout>
                 </Frame>
             </Grid>
