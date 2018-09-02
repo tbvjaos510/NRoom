@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NRoom.Network
 {
-    public partial class NetworkManager
+  /*  public partial class NetworkManager
     {
         public const string TOKEN_REFRESH_URL = "/token/refresh";
         public const int TOKEN_EXPIRED = 410;
@@ -24,15 +24,7 @@ namespace NRoom.Network
             }
             else
             {
-               /* if (resp.Status == TOKEN_EXPIRED)
-                {
-                    var loginResp = await Login();
-                    tokenInfo = new TokenInfo()
-                    {
-                        RefreshToken = loginResp.Data.RefreshToken,
-                        Token = loginResp.Data.Token
-                    };
-                }*/
+
             }
 
             return tokenInfo;
@@ -46,5 +38,5 @@ namespace NRoom.Network
             }
             return false;
         }
-    }
+    }*/
 }
