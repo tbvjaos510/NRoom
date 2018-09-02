@@ -5,7 +5,7 @@ var parser = new xml2js.Parser({explicitArray : false})
 module.exports = function (url, callback) {
     request(url, function (err, re, body) {
         parser.parseString(body, (err, result) => {
-            callback(result)
+            callback(result.response.body.items)
         })
     })
 }
