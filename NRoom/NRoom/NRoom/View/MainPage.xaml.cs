@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Com.Nhn.Android.Maps;
 
 namespace NRoom
 {
