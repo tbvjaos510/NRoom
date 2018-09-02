@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NRoom.View.HomeInfoView">
+    <ContentView.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="45*" />
+                <RowDefinition Height="45*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="96*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                         BackgroundColor="#222d47">
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Back_Tapped"></TapGestureRecognizer>
+                    </Grid.GestureRecognizers>
+                    <Image Source="/Assets/Back.png" WidthRequest="15" 
+                       HorizontalOptions="Start" Margin="5,0,0,0"/>
+                    <Label Grid.Column="1" Text="뒤로" FontSize="18" TextColor="White"
+                       VerticalTextAlignment="Center" Margin="-150,0,0,0"/>
+                </Grid>
+            </Grid>
+            <Label Grid.Column="0" Grid.ColumnSpan="2" Text="대구광역시 수성구 동대구로38길"
+                          FontSize="22" Margin="-30,0,0,3"  TextColor="White"
+                          HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+            <Image Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Source="/Assets/Home.png" />
+            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                <Frame BackgroundColor="White" HorizontalOptions="StartAndExpand" WidthRequest="500" Margin="0,-16,-20,0">
+                    <StackLayout>
+                        <Label Text="깨끗하고 넓은 원룸" HorizontalTextAlignment="Center" TextColor="Black" />
+                        <Label Text="_" HorizontalTextAlignment="Center" TextColor="Gray"/>
+                        <Label Text="월세 1억/35" HorizontalTextAlignment="Center" TextColor="Orange" FontSize="28"/>
+                        <Frame WidthRequest="120" HeightRequest="18" HorizontalOptions="Center">
+                            <Label Text="등록번호 : 12572628" HorizontalTextAlignment="Center" FontSize="12"/>
+                        </Frame>
+                        <Grid>
+                            
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</ContentView>
+    
+    <!--
+                <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                <Frame BackgroundColor="White" HorizontalOptions="StartAndExpand" WidthRequest="500" Margin="0,-16,-20,0">
+                    <Frame>
+                        <StackLayout>
+                            <Label Text="거래금액      27650만원" TextColor="Black" FontSize="18"/>
+                            <Label Text="등록번호      27260" TextColor="Black" FontSize="18"/>
+                            <Label Text="주소              대구광역시 수성구" TextColor="Black" FontSize="18"/>
+                            <Label Text="건축년도      1981" TextColor="Black" FontSize="18"/>
+                            <Label Text="전용면적      49" TextColor="Black" FontSize="18"/>
+                        </StackLayout>
+                    </Frame>
+                </Frame>
+            </Grid>
+    -->

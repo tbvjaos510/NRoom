@@ -1,5 +1,6 @@
 ﻿using NRoom.Model;
 using NRoom.Network;
+using NRoom.View;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -41,7 +42,7 @@ namespace NRoom
 
         private void Map_Tapped(object sender, EventArgs e)
         {
-
+            pageHome.IsVisible = true;
         }
 
         private void List_Tapped(object sender, EventArgs e)
