@@ -17,7 +17,7 @@ namespace NRoom
         {
             InitializeComponent();
 
-            GetTradeInfoAsync();
+           // GetTradeInfoAsync();
         }
 
         private async Task GetTradeInfoAsync()
