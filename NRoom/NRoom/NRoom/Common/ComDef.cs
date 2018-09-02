@@ -6,7 +6,7 @@ namespace NRoom.Common
 {
     class ComDef
     {
-        public const string SERVER_URL = "http://10.80.162.54:80";
+        public const string SERVER_URL = "http://10.80.161.54:80";
 
         public const int TIME_OUT = 30000;
     }

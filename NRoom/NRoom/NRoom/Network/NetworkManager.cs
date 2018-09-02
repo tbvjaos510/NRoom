@@ -23,14 +23,9 @@ namespace NRoom.Network
         }
         private async Task<NResponse<T>> GetResponse<T>(string resource, Method method, object parameterJson = null, TokenInfo token = null, UrlSegment[] urlSegments = null, Header[] headers = null)
         {
-            var client = CreateClient();
+            var client = CreateClient();    
             var restRequest = CreateRequest(resource, method, parameterJson, token, urlSegments, headers);
             var response = await client.Execute<NResponse<T>>(restRequest);
-            if (CheckTokenExpired(response))
-            {
-                App.tokenInfo = await TokenRefresh(App.tokenInfo);
-                return await GetResponse<T>(resource, method, parameterJson, token, urlSegments, headers);
-            }
 
             var resp = DeserializeSnakeCase<NResponse<T>>(response.Content);
             Debug.WriteLine(response.Content);
