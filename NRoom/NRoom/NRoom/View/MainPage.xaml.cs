@@ -1,5 +1,6 @@
 ﻿using NRoom.Model;
 using NRoom.Network;
+using NRoom.View;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -32,6 +33,21 @@ namespace NRoom
             {
                 Debug.WriteLine(e.Message);
             }
+        }
+
+        private void SearchMap_Clicked(object sender, EventArgs e)
+        {
+            Debug.WriteLine("클릭");
+        }
+
+        private void Map_Tapped(object sender, EventArgs e)
+        {
+            pageHome.IsVisible = true;
+        }
+
+        private void List_Tapped(object sender, EventArgs e)
+        {
+
         }
     }
 }

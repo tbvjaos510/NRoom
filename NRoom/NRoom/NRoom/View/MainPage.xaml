@@ -1,16 +1,76 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:NRoom"
+             xmlns:local="clr-namespace:NRoom.View"
              x:Class="NRoom.MainPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*" />
+            <RowDefinition Height="50*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="15*"/>
+        </Grid.ColumnDefinitions>
 
-    <StackLayout>
-        <Label Text="아이디" 
-           HorizontalOptions="Fill"
-           VerticalOptions="CenterAndExpand" />
-        <Label Text="비밀번호" 
-           HorizontalOptions="Fill"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+        <!--
+        <ListView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" VerticalOptions="Start" BackgroundColor="White">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label Text="지도로 방 찾기" HorizontalTextAlignment="Center" TextColor="Black"/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        -->
 
+
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" BackgroundColor="#222d47">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*" />
+                <RowDefinition Height="36*" />
+                <RowDefinition Height="24*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="43*"/>
+                <ColumnDefinition Width="43*"/>
+                <ColumnDefinition Width="7*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Row="0" Grid.Column="0" WidthRequest="30" Margin="8,30,0,0" 
+                   Source="/Assets/exit.png" 
+                   HorizontalOptions="End" VerticalOptions="Start"/>
+            <Label Grid.Row="0" Grid.Column="1" Margin="0,20,0,0"
+                   Text="여기만방" FontSize="26" TextColor="White"/>
+            <Frame Grid.Row="1" Grid.Column="1">
+                <StackLayout x:Name="layoutMap" 
+                             VerticalOptions="Center">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Map_Tapped"></TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                    <Image Source="/Assets/placeholder.png" HeightRequest="50"/>
+                    <Label Text="지도로 방 찾기" HorizontalTextAlignment="Center" 
+                   TextColor="Black" FontFamily="나눔스퀘어 Bold"/>
+                </StackLayout>
+            </Frame>
+            <Frame Grid.Row="1" Grid.Column="2">
+                <StackLayout x:Name="layoutList" 
+                             VerticalOptions="Center">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="List_Tapped"></TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                    <Image Source="/Assets/list.png" HeightRequest="50"/>
+                    <Label Text="전체 매물 보기" HorizontalTextAlignment="Center" TextColor="Black"/>
+                </StackLayout>
+            </Frame>
+        </Grid>
+        <Image Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" 
+               Source="/Assets/newsList.png" HeightRequest="900"
+               VerticalOptions="FillAndExpand"/>
+        <local:HomeInfoView x:Name="pageHome" IsVisible="False" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="0" Grid.RowSpan="2"/> 
+    </Grid>
 </ContentPage>
