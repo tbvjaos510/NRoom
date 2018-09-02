@@ -33,5 +33,20 @@ namespace NRoom
                 Debug.WriteLine(e.Message);
             }
         }
+
+        private void SearchMap_Clicked(object sender, EventArgs e)
+        {
+            Debug.WriteLine("클릭");
+        }
+
+        private void Map_Tapped(object sender, EventArgs e)
+        {
+
+        }
+
+        private void List_Tapped(object sender, EventArgs e)
+        {
+
+        }
     }
 }

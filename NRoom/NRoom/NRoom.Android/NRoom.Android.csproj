@@ -93,13 +93,8 @@
     <Folder Include="Resources\drawable-xhdpi\" />
     <Folder Include="Resources\drawable-xxhdpi\" />
     <Folder Include="Resources\drawable-xxxhdpi\" />
-    <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\NaverMapBinding\NaverMapBinding.csproj">
-      <Project>{198a2969-3082-46fd-a806-89323bb6253a}</Project>
-      <Name>NaverMapBinding</Name>
-    </ProjectReference>
     <ProjectReference Include="..\NRoom\NRoom.csproj">
       <Project>{4D4C85AF-A565-4666-8D36-BD9DD2A55068}</Project>
       <Name>NRoom</Name>
@@ -109,6 +104,18 @@
     <AndroidResource Include="Resources\layout\main.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\placeholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\newsList.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
