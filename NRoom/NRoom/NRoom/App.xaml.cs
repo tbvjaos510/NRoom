@@ -1,4 +1,6 @@
-﻿using NRoom.ViewModel;
+﻿using NRoom.Common;
+using NRoom.Model;
+using NRoom.ViewModel;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -9,11 +11,13 @@ namespace NRoom
     public partial class App : Application
     {
         public static TradeInfoViewModel TradeInfoViewModel = new TradeInfoViewModel();
+        public static TokenInfo tokenInfo;
 
         public App()
         {
             InitializeComponent();
 
+            Setting.Load();
             MainPage = new MainPage();
         }
 
