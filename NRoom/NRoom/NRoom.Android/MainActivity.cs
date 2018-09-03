@@ -15,6 +15,7 @@ using PushPageFromNative;
 using Xamarin.Forms;
 using NRoom.Droid;
 using Java.Util;
+using Xamarin.Forms.Platform.Android;
 
 [assembly: Dependency(typeof(MainActivity))]
 namespace NRoom.Droid
@@ -109,7 +110,8 @@ namespace NRoom.Droid
 
         public bool OnClusterItemClick(Java.Lang.Object marker)
         {
-            Toast.MakeText(this, GetAddress(((Home)marker).Position).ToString(), ToastLength.Short).Show();
+         
+            //      Toast.MakeText(this, GetAddress(((Home)marker).Position).ToString(), ToastLength.Short).Show();
             return false;
         }
 

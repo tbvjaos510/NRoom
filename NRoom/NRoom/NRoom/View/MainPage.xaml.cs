@@ -43,6 +43,10 @@ namespace NRoom
             Debug.WriteLine("클릭");
         }
 
+        public void HomePage()
+        {
+            pageHome.IsVisible = true;
+        }
 
         private void Map_Tapped(object sender, EventArgs e)
         {
@@ -51,7 +55,7 @@ namespace NRoom
 
         private void List_Tapped(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
