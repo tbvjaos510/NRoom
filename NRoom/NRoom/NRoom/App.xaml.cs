@@ -12,6 +12,7 @@ namespace NRoom
     {
         public static TradeInfoViewModel TradeInfoViewModel = new TradeInfoViewModel();
         public static TokenInfo tokenInfo;
+       // public static MainPage MainPage;
 
         public App()
         {
