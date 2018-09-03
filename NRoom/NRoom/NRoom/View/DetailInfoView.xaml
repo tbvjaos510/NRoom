@@ -17,14 +17,14 @@
             </Grid.ColumnDefinitions>
 
             <Frame Grid.Row="1" Grid.Column="1">
-                <StackLayout>
+                <StackLayout VerticalOptions="Center">
                     <!-- 1. 공기질 2. 교통 3. 치안-->
-                    <Label Text="공기질  좋음" HorizontalTextAlignment="Center" 
-                           TextColor="Black" FontSize="22"/>
-                    <Label Text="교통   : 좋음" HorizontalTextAlignment="Center" 
-                           TextColor="Black" FontSize="22"/>
-                    <Label Text="치안   : 좋음" HorizontalTextAlignment="Center" 
-                           TextColor="Black" FontSize="22"/>
+                    <Label Text="공기질 : 보통" HorizontalTextAlignment="Center" 
+                           TextColor="Black" FontSize="26" Margin="0,0,0,20"/>
+                    <Label Text="  교통   : 좋음" HorizontalTextAlignment="Center" 
+                           TextColor="Black" FontSize="26" Margin="0,0,0,20"/>
+                    <Label Text="  치안   : 좋음" HorizontalTextAlignment="Center" 
+                           TextColor="Black" FontSize="26"/>
                 </StackLayout>
             </Frame>
         </Grid>

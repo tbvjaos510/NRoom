@@ -55,8 +55,9 @@ namespace NRoom.Droid
                 clusterManager.Renderer = new TClusterRenderer(Instance, map, clusterManager);
                 map.SetOnCameraIdleListener(clusterManager);
                 map.SetOnMarkerClickListener(clusterManager);
+                //35.858070, 128.624213
                 for (int i = 0; i < 500; i++)
-                    addMarker(new LatLng(Java.Lang.Math.Random()/10 + 35, Java.Lang.Math.Random()/10 + 128));
+                    addMarker(new LatLng(Java.Lang.Math.Random()/10 + 35.8, Java.Lang.Math.Random()/10 + 128.6));
 
             }
         }

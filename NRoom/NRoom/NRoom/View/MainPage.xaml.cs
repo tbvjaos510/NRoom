@@ -1,5 +1,4 @@
-﻿using Android.Widget;
-using NRoom.Common;
+﻿using NRoom.Common;
 using NRoom.Model;
 using NRoom.Network;
 using NRoom.View;
@@ -47,6 +46,7 @@ namespace NRoom
         private void Map_Tapped(object sender, EventArgs e)
         {
             DependencyService.Get<IShowForm>().PushPage();
+            //pageHome.IsVisible = true;
         }
 
         private void List_Tapped(object sender, EventArgs e)
