@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NRoom.View.DetailInfoView">
+             x:Class="NRoom.View.DetailInfoView" >
   <ContentView.Content>
         <Grid BackgroundColor="White">
             <Grid.RowDefinitions>
@@ -18,7 +18,13 @@
 
             <Frame Grid.Row="1" Grid.Column="1">
                 <StackLayout>
-                    <Label Text="미세먼지       : 좋음" HorizontalTextAlignment="Center" TextColor="Black"/>
+                    <!-- 1. 공기질 2. 교통 3. 치안-->
+                    <Label Text="공기질  좋음" HorizontalTextAlignment="Center" 
+                           TextColor="Black" FontSize="22"/>
+                    <Label Text="교통   : 좋음" HorizontalTextAlignment="Center" 
+                           TextColor="Black" FontSize="22"/>
+                    <Label Text="치안   : 좋음" HorizontalTextAlignment="Center" 
+                           TextColor="Black" FontSize="22"/>
                 </StackLayout>
             </Frame>
         </Grid>

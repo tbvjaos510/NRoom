@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:NRoom.View"
              x:Class="NRoom.View.HomeInfoView">
     <ContentView.Content>
         <Grid>
@@ -31,6 +32,7 @@
                           FontSize="22" Margin="-30,0,0,3"  TextColor="White"
                           HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
             <Image Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Source="/Assets/Home.png" />
+            
             <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
                 <Frame BackgroundColor="White" HorizontalOptions="StartAndExpand" WidthRequest="500" Margin="0,-16,-20,0">
                     <StackLayout>
@@ -66,10 +68,11 @@
                         <Label Text="″미세먼지가 적은 청결한 동네″" HorizontalTextAlignment="Center" 
                                TextColor="Black" FontSize="22" VerticalOptions="EndAndExpand"/>
                         -->
-                        <Image Source="/Assets/Positive.png" VerticalOptions="EndAndExpand" WidthRequest="50"/>
+                        <Image Source="/Assets/Positive.png" VerticalOptions="EndAndExpand" WidthRequest="300"/>
                     </StackLayout>
                 </Frame>
             </Grid>
+            <local:DetailInfoView x:Name="ViewDetailInfo" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="False"/>
         </Grid>
     </ContentView.Content>
 </ContentView>
