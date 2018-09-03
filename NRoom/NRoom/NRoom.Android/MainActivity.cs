@@ -60,11 +60,17 @@ namespace NRoom.Droid
 
             }
         }
-        private List<Address>GetAddress(string name)
+        public Address GetAddress(string name)
         {
             Geocoder geocoder = new Geocoder(Instance, Locale.Default);
-            List<Address> address = geocoder.GetFromLocationName(name, 5) as List<Address>;
-            return address;
+            IList<Address> address = geocoder.GetFromLocationName(name, 1);
+            return address[0];
+        }
+        public Address GetAddress(LatLng locate)
+        {
+            Geocoder geocoder = new Geocoder(Instance, Locale.Default);
+            IList<Address> address = geocoder.GetFromLocation(locate.Latitude, locate.Longitude, 1);
+            return address[0];
         }
         private void InitMap()
         {
@@ -103,7 +109,7 @@ namespace NRoom.Droid
 
         public bool OnClusterItemClick(Java.Lang.Object marker)
         {
-            Toast.MakeText(this, GetAddress("Seoul")[0].ToString(), ToastLength.Short).Show();
+            Toast.MakeText(this, GetAddress(((Home)marker).Position).ToString(), ToastLength.Short).Show();
             return false;
         }
 
