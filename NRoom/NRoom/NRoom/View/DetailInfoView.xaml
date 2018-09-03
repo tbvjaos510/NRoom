@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NRoom.View.DetailInfoView">
+  <ContentView.Content>
+        <Grid BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="80*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+
+            <Frame Grid.Row="1" Grid.Column="1">
+                <StackLayout>
+                    <Label Text="미세먼지       : 좋음" HorizontalTextAlignment="Center" TextColor="Black"/>
+                </StackLayout>
+            </Frame>
+        </Grid>
+  </ContentView.Content>
+</ContentView>

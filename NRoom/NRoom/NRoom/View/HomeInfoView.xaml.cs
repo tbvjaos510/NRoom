@@ -21,5 +21,10 @@ namespace NRoom.View
         {
             this.IsVisible = false;
         }
+
+        private void Positive_Tapped(object sender, EventArgs e)
+        {
+
+        }
     }
 }

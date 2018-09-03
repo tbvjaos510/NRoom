@@ -51,16 +51,22 @@
                                 <Label Text="전용 면적" TextColor="Gray" HorizontalTextAlignment="Center" FontSize="10"/>
                             </StackLayout>
                             <StackLayout Grid.Column="1">
-                                <Label Text="5만원" TextColor="Black" HorizontalTextAlignment="Center" FontSize="14"/>
-                                <Label Text="관리비" TextColor="Gray" HorizontalTextAlignment="Center" FontSize="10"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Positive_Tapped"/> 
+                                </StackLayout.GestureRecognizers>
+                                <Label Text="교통" TextColor="Green" HorizontalTextAlignment="Center" FontSize="14"/>
+                                <Label Text="장점" TextColor="Gray" HorizontalTextAlignment="Center" FontSize="10"/>
                             </StackLayout>
                             <StackLayout Grid.Column="2">
                                 <Label Text="오픈형 원룸" TextColor="Black" HorizontalTextAlignment="Center" FontSize="14"/>
                                 <Label Text="구조" TextColor="Gray" HorizontalTextAlignment="Center" FontSize="10"/>
                             </StackLayout>
                         </Grid>
-                        <Label Text="미세먼지가 적은 청결한 동네" HorizontalTextAlignment="Center" 
+                        <!--
+                        <Label Text="″미세먼지가 적은 청결한 동네″" HorizontalTextAlignment="Center" 
                                TextColor="Black" FontSize="22" VerticalOptions="EndAndExpand"/>
+                        -->
+                        <Image Source="/Assets/Positive.png" VerticalOptions="EndAndExpand" WidthRequest="50"/>
                     </StackLayout>
                 </Frame>
             </Grid>
