@@ -55,7 +55,7 @@ namespace NRoom
 
         private void List_Tapped(object sender, EventArgs e)
         {
-            
+            pageHome.IsVisible = true;
         }
     }
 }

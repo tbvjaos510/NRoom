@@ -42,10 +42,10 @@ namespace NRoom.Droid
 
             if (map != null)
             {
-                LatLng location = new LatLng(35, 128);
+                LatLng location = new LatLng(35.8, 128.6);
                 CameraPosition.Builder builder = CameraPosition.InvokeBuilder();
                 builder.Target(location);
-                builder.Zoom(18);
+                builder.Zoom(10);
                 map.MoveCamera(CameraUpdateFactory.NewCameraPosition(builder.Build()));
 
                 clusterManager = new ClusterManager(Instance, map);
