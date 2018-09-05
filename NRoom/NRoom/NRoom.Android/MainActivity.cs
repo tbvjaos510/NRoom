@@ -33,7 +33,7 @@ namespace NRoom.Droid
         static ClusterManager clusterManager;
         public void addMarker(LatLng location)
         {
-            clusterManager.AddItem(new Home(location.Latitude, location.Longitude, "하나로", "마트"));
+            clusterManager.AddItem(new Home(location.Latitude, location.Longitude, "대구광역시 수성구 동대구로38길", "원룸"));
         }
 
         public void OnMapReady(GoogleMap googleMap)
@@ -111,7 +111,7 @@ namespace NRoom.Droid
 
         public bool OnClusterItemClick(Java.Lang.Object marker)
         {
-         
+            
             //      Toast.MakeText(this, GetAddress(((Home)marker).Position).ToString(), ToastLength.Short).Show();
             return false;
         }
