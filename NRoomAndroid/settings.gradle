@@ -1,1 +1,1 @@
-include ':app', ':naver-map-api-2.1.3'
+include ':app'

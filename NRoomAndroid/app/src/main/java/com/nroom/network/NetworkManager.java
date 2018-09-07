@@ -1,4 +1,4 @@
-package com.example.nroom.nroom.network;
+package com.nroom.network;
 
 import android.os.AsyncTask;
 import android.util.JsonReader;

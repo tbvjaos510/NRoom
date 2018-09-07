@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.nroom.nroom"
+        applicationId 'com.nroom'
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -23,18 +23,13 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.0.0-rc02'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
     implementation 'com.google.android.material:material:1.0.0-rc01'
-    implementation 'com.google.android.gms:play-services-maps:15.0.1'
+    implementation (name: 'naver-map-api-2.1.3', ext: 'aar')
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
-    implementation 'com.naver.maps.open:naver-map-api:2.1.3@aar'
-}
-repositories {
-    flatDir {
-        dirs 'libs'
-    }
 }
