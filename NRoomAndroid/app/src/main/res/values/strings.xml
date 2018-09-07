@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">여기만방</string>
+    <string name="find_with_map">지도로 방찾기</string>
+    <string name="view_all">전체 매물 보기</string>
 </resources>

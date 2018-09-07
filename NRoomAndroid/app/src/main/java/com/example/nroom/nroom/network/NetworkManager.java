@@ -1,11 +1,11 @@
-package com.example.nroom.nroom.Network;
+package com.example.nroom.nroom.network;
 
 import android.os.AsyncTask;
 import android.util.JsonReader;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -17,7 +17,7 @@ public class NetworkManager {
             try {
                 HttpsURLConnection myConnection =
                         (HttpsURLConnection) uris[0].openConnection();
-                if (myConnection.getResponseCode() == 200) {
+                if (myConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                     InputStreamReader responseBodyReader =
                             new InputStreamReader(myConnection.getInputStream(), "UTF-8");
                     JsonReader jsonReader = new JsonReader(responseBodyReader);
