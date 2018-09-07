@@ -33,7 +33,7 @@ namespace NRoom.Droid
         static ClusterManager clusterManager;
         public void addMarker(LatLng location)
         {
-            clusterManager.AddItem(new Home(location.Latitude, location.Longitude, "하나로", "마트"));
+            clusterManager.AddItem(new Home(location.Latitude, location.Longitude, "대구광역시 수성구 동대구로38길", "원룸"));
         }
 
         public void OnMapReady(GoogleMap googleMap)
@@ -42,10 +42,10 @@ namespace NRoom.Droid
 
             if (map != null)
             {
-                LatLng location = new LatLng(35, 128);
+                LatLng location = new LatLng(35.8, 128.6);
                 CameraPosition.Builder builder = CameraPosition.InvokeBuilder();
                 builder.Target(location);
-                builder.Zoom(18);
+                builder.Zoom(10);
                 map.MoveCamera(CameraUpdateFactory.NewCameraPosition(builder.Build()));
 
                 clusterManager = new ClusterManager(Instance, map);
@@ -56,8 +56,9 @@ namespace NRoom.Droid
                 clusterManager.Renderer = new TClusterRenderer(Instance, map, clusterManager);
                 map.SetOnCameraIdleListener(clusterManager);
                 map.SetOnMarkerClickListener(clusterManager);
+                //35.858070, 128.624213
                 for (int i = 0; i < 500; i++)
-                    addMarker(new LatLng(Java.Lang.Math.Random()/10 + 35, Java.Lang.Math.Random()/10 + 128));
+                    addMarker(new LatLng(Java.Lang.Math.Random()/10 + 35.8, Java.Lang.Math.Random()/10 + 128.6));
 
             }
         }
@@ -110,7 +111,7 @@ namespace NRoom.Droid
 
         public bool OnClusterItemClick(Java.Lang.Object marker)
         {
-         
+            
             //      Toast.MakeText(this, GetAddress(((Home)marker).Position).ToString(), ToastLength.Short).Show();
             return false;
         }

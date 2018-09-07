@@ -1,7 +1,7 @@
-﻿using Android.Widget;
-using NRoom.Common;
+﻿using NRoom.Common;
 using NRoom.Model;
 using NRoom.Network;
+using NRoom.Network.Data;
 using NRoom.View;
 using PushPageFromNative;
 using System;
@@ -26,11 +26,11 @@ namespace NRoom
 
         private async Task GetTradeInfoAsync()
         {
-            NResponse<TradeInfo> lstTradeInfo = null;
+            NResponse<TradeInfoData> lstTradeInfo = null;
 
             try
             {
-             //   lstTradeInfo = await networkManager.getTradeInfo();
+             lstTradeInfo = await networkManager.getTradeInfo();
             }
             catch (Exception e)
             {
@@ -51,11 +51,12 @@ namespace NRoom
         private void Map_Tapped(object sender, EventArgs e)
         {
             DependencyService.Get<IShowForm>().PushPage();
+            //pageHome.IsVisible = true;
         }
 
         private void List_Tapped(object sender, EventArgs e)
         {
-            
+            pageHome.IsVisible = true;
         }
     }
 }
