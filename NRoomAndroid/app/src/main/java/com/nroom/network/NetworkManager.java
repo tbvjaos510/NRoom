@@ -12,9 +12,19 @@ import javax.net.ssl.HttpsURLConnection;
 // https://code.tutsplus.com/ko/tutorials/android-from-scratch-using-rest-apis--cms-27117 네트워크 연결하는 방법 홈페이지
 public class NetworkManager {
 
-    private NetworkManager() {}
+    private String result;
+    private String URL;
 
-    public static class GetResponseTask extends AsyncTask<URL, Integer, String> {
+    /*public URLConnector(String url){
+        URL = url;
+    }
+*/
+    private NetworkManager() {
+
+    }
+}
+
+    /*public static class GetResponseTask extends AsyncTask<URL, Integer, String> {
         @Override
         protected String doInBackground(URL... uris) {
             try {
@@ -37,7 +47,7 @@ public class NetworkManager {
             super.onPostExecute(s);
         }
     }
-    /*public static void GetResponse(final URI uri){
+    public static void GetResponse(final URI uri){
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
@@ -46,4 +56,3 @@ public class NetworkManager {
             }
         });
     }*/
-}
