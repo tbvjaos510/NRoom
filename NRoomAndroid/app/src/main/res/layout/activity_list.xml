@@ -13,12 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <ImageButton
+    <ToggleButton
         android:id="@+id/btnGps"
         android:layout_width="140px"
         android:layout_height="140px"
         android:layout_marginLeft="20dp"
-        android:src="@drawable/gps"
+        android:textSize="1dp"
+        android:background="@drawable/gps"
         />
 
     <Button
