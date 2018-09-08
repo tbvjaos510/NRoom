@@ -25,7 +25,13 @@
         </activity>
         <activity android:name=".activity.MapActivity" />
         <activity android:name=".activity.ListActivity" />
-        <activity android:name=".activity.DetailActivity" />
+        <activity android:name=".activity.DetailActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
     <meta-data

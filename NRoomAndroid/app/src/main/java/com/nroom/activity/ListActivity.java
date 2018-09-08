@@ -1,11 +1,10 @@
 package com.nroom.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.nroom.R;
 
-public class ListActivity extends AppCompatActivity {
+public class ListActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

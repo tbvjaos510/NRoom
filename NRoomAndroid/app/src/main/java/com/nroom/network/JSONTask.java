@@ -35,18 +35,16 @@ public class JSONTask extends AsyncTask<String, String, String> {
 
                 reader = new BufferedReader(new InputStreamReader(stream));
 
-                StringBuffer buffer = new StringBuffer();
+                StringBuilder builder = new StringBuilder();
 
                 String line = ""; // 나중에 클래스로 변환해야 될 듯
                 while ((line = reader.readLine()) != null) {
-                    buffer.append(line);
+                    builder.append(line);
                 }
 
-                return buffer.toString();
+                return builder.toString();
 
 
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {

@@ -7,7 +7,7 @@
     tools:context=".activity.DetailActivity">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/viewPagerCard"
+        android:id="@+id/view_pager_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
+            android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/simple_info_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -36,7 +36,7 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewPagerCard">
+        app:layout_constraintTop_toBottomOf="@+id/view_pager_card">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -50,12 +50,11 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:text="한 줄 요약"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="한 줄 요약"
-                android:textStyle="normal"
-                android:fontFamily="@font/bmjua"/>
+                tools:text="한 줄 요약" />
 
             <View
                 android:id="@+id/view"
@@ -63,104 +62,114 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="8dp"
                 android:background="@color/colorPrimary"
-                android:maxWidth="0dp"
                 app:layout_constraintEnd_toEndOf="@+id/summary"
                 app:layout_constraintStart_toStartOf="@+id/summary"
                 app:layout_constraintTop_toBottomOf="@+id/summary" />
 
             <TextView
-                android:id="@+id/value"
+                android:id="@+id/price"
                 style="@style/TextAppearance.MaterialComponents.Headline5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
+                android:text="월세 50 / 50"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view"
-                tools:text="월세 50 / 50"
-                android:textStyle="normal"
-                android:fontFamily="@font/bmjua" />
-
-            <TextView
-                android:id="@+id/saleID"
-                style="@style/TextAppearance.MaterialComponents.Caption"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/value"
-                tools:text="312410"
-                android:textStyle="normal"
-                android:fontFamily="@font/bmjua" />
+                tools:text="월세 50 / 50" />
 
             <LinearLayout
-                android:id="@+id/areaLayout"
+                android:id="@+id/sale_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/adminExpLayout"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/border"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/saleID">
+                app:layout_constraintTop_toBottomOf="@+id/price">
 
                 <TextView
-                    android:id="@+id/text_area"
-                    style="@style/TextAppearance.MaterialComponents.Body2"
+                    style="@style/TextAppearance.MaterialComponents.Caption"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    tools:text="59.02m²/ 18p"
-                    android:textStyle="normal"
-                    android:fontFamily="@font/oswald" />
+                    android:layout_marginEnd="4dp"
+                    android:text="@string/label_sale_id"
+                    app:fontFamily="@font/bm_jua" />
 
                 <TextView
+                    android:id="@+id/sale_id"
+                    style="@style/TextAppearance.MaterialComponents.Caption"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/label_area"
-                    android:textStyle="normal"
-                    android:fontFamily="@font/bmjua"/>
+                    android:text="312410"
+                    tools:text="312410" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/adminExpLayout"
+                android:id="@+id/area_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/saleID"
-                app:layout_constraintStart_toStartOf="@+id/saleID"
-                app:layout_constraintTop_toBottomOf="@+id/saleID">
+                app:layout_constraintEnd_toStartOf="@+id/admin_exp_layout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sale_layout">
 
                 <TextView
-                    android:id="@+id/text_admin_exp"
+                    android:id="@+id/area"
                     style="@style/TextAppearance.MaterialComponents.Body2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    tools:text="5만원"
-                    android:textStyle="normal"
-                    android:fontFamily="@font/bmjua" />
+                    android:text="59.02m² / 18p"
+                    tools:text="59.02m² / 18p" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="@string/label_admin_exp"
-                    android:textStyle="normal"
-                    android:fontFamily="@font/bmjua" />
+                    android:text="@string/label_area" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/structureLayout"
+                android:id="@+id/admin_exp_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/sale_layout"
+                app:layout_constraintStart_toStartOf="@+id/sale_layout"
+                app:layout_constraintTop_toBottomOf="@+id/sale_layout">
+
+                <TextView
+                    android:id="@+id/admin_exp"
+                    style="@style/TextAppearance.MaterialComponents.Body2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="5만원"
+                    tools:text="5만원" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/label_admin_exp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/structure_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -168,32 +177,29 @@
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/adminExpLayout"
-                app:layout_constraintTop_toBottomOf="@+id/saleID">
+                app:layout_constraintStart_toEndOf="@+id/admin_exp_layout"
+                app:layout_constraintTop_toBottomOf="@+id/sale_layout">
 
                 <TextView
-                    android:id="@+id/text_structure"
+                    android:id="@+id/structure"
                     style="@style/TextAppearance.MaterialComponents.Body2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    tools:text="분리형 원룸"
-                    android:textStyle="normal"
-                    android:fontFamily="@font/bmjua" />
+                    android:text="분리형 원룸"
+                    tools:text="분리형 원룸" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="@string/label_structure"
-                    android:textStyle="normal"
-                    android:fontFamily="@font/bmjua" />
+                    android:text="@string/label_structure" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
+        android:id="@+id/chart_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -201,9 +207,10 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView">
+        app:layout_constraintTop_toBottomOf="@+id/simple_info_card">
 
         <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </androidx.cardview.widget.CardView>
@@ -218,6 +225,41 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+        app:layout_constraintTop_toBottomOf="@+id/chart_card">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/detail_summary_label"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/label_detail_summary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/detail_summary"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_summary_label"
+                tools:text="@tools:sample/lorem[10]" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/bm_jua_font</item>
+        <item name="fontFamily">@font/bm_jua_font</item>
     </style>
 
 </resources>
