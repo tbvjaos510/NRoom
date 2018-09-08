@@ -53,7 +53,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="한 줄 요약" />
+                tools:text="한 줄 요약"
+                android:textStyle="normal"
+                android:fontFamily="@font/bmjua"/>
 
             <View
                 android:id="@+id/view"
@@ -76,7 +78,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view"
-                tools:text="월세 50 / 50" />
+                tools:text="월세 50 / 50"
+                android:textStyle="normal"
+                android:fontFamily="@font/bmjua" />
 
             <TextView
                 android:id="@+id/saleID"
@@ -89,7 +93,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/value"
-                tools:text="312410" />
+                tools:text="312410"
+                android:textStyle="normal"
+                android:fontFamily="@font/bmjua" />
 
             <LinearLayout
                 android:id="@+id/areaLayout"
@@ -109,13 +115,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    tools:text="59.02m² / 18p" />
+                    tools:text="59.02m²/ 18p"
+                    android:textStyle="normal"
+                    android:fontFamily="@font/oswald" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="@string/label_area" />
+                    android:text="@string/label_area"
+                    android:textStyle="normal"
+                    android:fontFamily="@font/bmjua"/>
             </LinearLayout>
 
             <LinearLayout
@@ -136,13 +146,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    tools:text="5만원" />
+                    tools:text="5만원"
+                    android:textStyle="normal"
+                    android:fontFamily="@font/bmjua" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="@string/label_admin_exp" />
+                    android:text="@string/label_admin_exp"
+                    android:textStyle="normal"
+                    android:fontFamily="@font/bmjua" />
             </LinearLayout>
 
             <LinearLayout
@@ -163,13 +177,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    tools:text="분리형 원룸" />
+                    tools:text="분리형 원룸"
+                    android:textStyle="normal"
+                    android:fontFamily="@font/bmjua" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="@string/label_structure" />
+                    android:text="@string/label_structure"
+                    android:textStyle="normal"
+                    android:fontFamily="@font/bmjua" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
