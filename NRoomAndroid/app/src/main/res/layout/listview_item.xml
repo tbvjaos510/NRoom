@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/houseimageView"/>
+    <LinearLayout
+        android:id="@+id/houseinfoLayout"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/text_houseprice"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="New text"
+            android:textStyle="normal"
+            android:fontFamily="@font/bmjua" />
+
+        <TextView
+            android:id="@+id/text_houselocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/label_area"
+            android:textStyle="normal"
+            android:fontFamily="@font/bmjua"/>
+
+        <TextView
+            android:id="@+id/text_housenotice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/label_area"
+            android:textStyle="normal"
+            android:fontFamily="@font/bmjua"/>
+    </LinearLayout>
+    
+</LinearLayout>
