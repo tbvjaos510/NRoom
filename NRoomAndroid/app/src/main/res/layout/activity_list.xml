@@ -7,6 +7,7 @@
     tools:context="com.nroom.activity.ListActivity">
 
     <Button
+        android:id="@+id/btnLocal"
         android:background="@drawable/button_radius"
         android:layout_width="match_parent"
         android:layout_height="26pt"
