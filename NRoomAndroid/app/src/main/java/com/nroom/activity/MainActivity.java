@@ -1,8 +1,10 @@
-package com.example.nroom.nroom;
+package com.nroom.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+
+import com.nroom.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 

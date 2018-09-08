@@ -1,4 +1,4 @@
-package com.example.nroom.nroom;
+package com.nroom;
 
 import org.junit.Test;
 

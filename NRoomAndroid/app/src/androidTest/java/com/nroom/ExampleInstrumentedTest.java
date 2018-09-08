@@ -1,4 +1,4 @@
-package com.example.nroom.nroom;
+package com.nroom;
 
 import android.content.Context;
 import androidx.test.InstrumentationRegistry;

@@ -1,7 +1,9 @@
-package com.example.nroom.nroom;
+package com.nroom.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.nroom.R;
 
 public class ListActivity extends AppCompatActivity {
 
