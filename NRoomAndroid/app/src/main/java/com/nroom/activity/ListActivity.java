@@ -10,14 +10,17 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.nroom.R;
+import com.nroom.listview.ListViewAdapter;
 import com.nroom.network.JSONTask;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 public class ListActivity extends AppCompatActivity {
     private final LocationListener mLocationListener = new LocationListener() {
@@ -46,6 +49,7 @@ public class ListActivity extends AppCompatActivity {
     };
 
     private String selectdeLocal = "서울특별시";
+    private ListView mListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +83,19 @@ public class ListActivity extends AppCompatActivity {
             }
         });
 
+        mListView = (ListView)findViewById(R.id.sale_listview);
+
+        dataSetting();
+    }
+
+    private void dataSetting() {
+        ListViewAdapter listViewAdapter = new ListViewAdapter();
+
+        for(int i=0; i<10; i++){
+            listViewAdapter.addItem(ContextCompat.getDrawable(getApplicationContext(), R.drawable.icon), "price_" + i, "location_" + i, "nociet_" + i);
+        }
+
+        mListView.setAdapter(listViewAdapter);
     }
 
     private void InitSpinner(View view) {
@@ -109,6 +126,4 @@ public class ListActivity extends AppCompatActivity {
         });
         return ;
     }
-
-
 }
