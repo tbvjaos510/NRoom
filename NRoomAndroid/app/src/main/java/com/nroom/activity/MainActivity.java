@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.nroom.BuildConfig;
 import com.nroom.R;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,16 +20,26 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(findViewById(R.id.toolbar));
 
-        Button btnMap = findViewById(R.id.btnMap);
+        Button btnMap = bind(R.id.btnMap);
         btnMap.setOnClickListener(view -> {
             Intent intent = new Intent(this, MapActivity.class);
             startActivity(intent);
         });
 
-        Button btnList = findViewById(R.id.btnList);
+        Button btnList = bind(R.id.btnList);
         btnList.setOnClickListener(view -> {
             Intent intent = new Intent(this, ListActivity.class);
             startActivity(intent);
         });
+
+        MobileAds.initialize(this, "ca-app-pub-3072268700543290~9298958419");
+
+        mAdView = bind(R.id.adView);
+        AdRequest.Builder builder = new AdRequest.Builder();
+                /*if (BuildConfig.DEBUG) {
+                    builder.addTestDevice(AdRequest.DEVICE_ID_EMULATOR);
+                    builder.setRequestAgent("android_studio:ad_template");
+                }*/
+        mAdView.loadAd(builder.build());
     }
 }
