@@ -7,11 +7,15 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.nroom.R;
+import com.nroom.network.JSONTask;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -40,6 +44,9 @@ public class ListActivity extends AppCompatActivity {
 
         }
     };
+
+    private String selectdeLocal = "서울특별시";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,8 +54,7 @@ public class ListActivity extends AppCompatActivity {
 
         Button btnLocal = findViewById(R.id.btnLocal);
         btnLocal.setOnClickListener(view -> {
-            /*Intent intent = new Intent(this, MapActivity.class);
-            startActivity(intent);*/
+            InitSpinner(view);
         });
 
         ToggleButton btnGps = findViewById(R.id.btnGps);
@@ -74,5 +80,35 @@ public class ListActivity extends AppCompatActivity {
         });
 
     }
+
+    private void InitSpinner(View view) {
+        String before = selectdeLocal;
+        Spinner localSpinner = findViewById(R.id.localSpinner);
+        localSpinner.setVisibility(view.VISIBLE);
+
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.location,android.R.layout.simple_spinner_item);
+
+        localSpinner.setAdapter(adapter);
+
+        localSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectdeLocal = (String) parent.getItemAtPosition(position);
+                if(!selectdeLocal.equals(before)){
+                    //TODO: 서버랑 연동
+                    localSpinner.setVisibility(view.INVISIBLE);
+                    selectdeLocal = "서울특별시";
+                    return ;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                selectdeLocal = "";
+            }
+        });
+        return ;
+    }
+
 
 }

@@ -12,11 +12,11 @@
 
     <LinearLayout
         android:id="@+id/house_info_layout"
-        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/text_house_price"
@@ -24,22 +24,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="New text"
-            android:fontFamily="@font/bm_jua" />
+            android:fontFamily="@font/bm_jua"
+            android:text="New text" />
 
         <TextView
             android:id="@+id/text_house_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/label_area"/>
+            android:text="@string/label_area" />
 
         <TextView
             android:id="@+id/text_house_notice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/label_area"/>
+            android:text="@string/label_area" />
     </LinearLayout>
     
 </LinearLayout>
