@@ -20,6 +20,14 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
+    allprojects {
+        repositories {
+            jcenter()
+            maven {
+                url "https://maven.google.com"
+            }
+        }
+    }
 }
 
 dependencies {
@@ -32,4 +40,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+    implementation 'com.google.android.gms:play-services-ads:15.0.0'
 }

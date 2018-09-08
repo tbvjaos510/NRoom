@@ -4,11 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.nroom.R;
 
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.gms.ads.MobileAds;
 
 public class MainActivity extends AppCompatActivity {
+    private  AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,5 +32,11 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ListActivity.class);
             startActivity(intent);
         });
+
+        MobileAds.initialize(this, "ca-app-pub-3072268700543290~9298958419");
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 }
