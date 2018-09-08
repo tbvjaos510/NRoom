@@ -11,6 +11,9 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 // https://code.tutsplus.com/ko/tutorials/android-from-scratch-using-rest-apis--cms-27117 네트워크 연결하는 방법 홈페이지
 public class NetworkManager {
+
+    private NetworkManager() {}
+
     public static class GetResponseTask extends AsyncTask<URL, Integer, String> {
         @Override
         protected String doInBackground(URL... uris) {
