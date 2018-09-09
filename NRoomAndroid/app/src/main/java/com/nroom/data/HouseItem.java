@@ -2,25 +2,10 @@ package com.nroom.data;
 
 import android.graphics.drawable.Drawable;
 
-import java.util.List;
+import com.nroom.R;
 
-/*
-                object.getString("시군구코드");
-                object.getString("시도명");
-                object.getString("시군구명");
-                object.getString("id");
-                object.getString("지역번호");
-                object.getString("법정동");
-                object.getString("집종류");
-                object.getString("건물명");
-                object.getString("전용면적");
-                object.getString("층");
-                object.getString("건축년도");
-                object.getString("일");
-                object.getString("지번");
-                object.getString("거래금액");
-                object.getString("도로명코드");
- */
+import java.util.ArrayList;
+import java.util.List;
 
 public class HouseItem {
 
@@ -70,6 +55,8 @@ public class HouseItem {
         this.지번 = 지번;
         this.거래금액 = 거래금액;
         this.도로명코드 = 도로명코드;
+        this.위도 = 33.333;
+        this.경도 = 33.333;
     }
 
     public void set시군구코드(String 시군구코드) {

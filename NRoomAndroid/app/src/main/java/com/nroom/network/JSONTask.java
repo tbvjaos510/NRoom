@@ -20,11 +20,12 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class JSONTask extends AsyncTask<String, String, String> {
-
+    private List<HouseItem> lstHouse = new ArrayList<>();
     @Override
     protected String doInBackground(String... urls) {
         try {
@@ -76,7 +77,22 @@ public class JSONTask extends AsyncTask<String, String, String> {
             JSONArray jsonArray = jsonObject.getJSONArray("data");
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject object = jsonArray.getJSONObject(i);
-                object.getString("시군구코드");
+                lstHouse.add(new HouseItem(object.getString("시군구코드"),
+                        object.getString("시도명"),
+                        object.getString("시군구명"),
+                        object.getString("id"),
+                        object.getString("지역번호"),
+                        object.getString("법정동"),
+                        object.getString("집종류"),
+                        object.getString("건물명"),
+                        object.getString("전용면적"),
+                        object.getString("층"),
+                        object.getString("건축년도"),
+                        object.getString("일"),
+                        object.getString("지번"),
+                        object.getString("거래금액"),
+                        object.getString("도로명코드")));
+              /*  object.getString("시군구코드");
                 object.getString("시도명");
                 object.getString("시군구명");
                 object.getString("id");
@@ -91,7 +107,7 @@ public class JSONTask extends AsyncTask<String, String, String> {
                 object.getString("지번");
                 object.getString("거래금액");
                 object.getString("도로명코드");
-                Log.v("12312", object.toString() + " ,");
+                Log.v("12312", object.toString() + " ,");*/
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -102,7 +118,6 @@ public class JSONTask extends AsyncTask<String, String, String> {
 
        // String[] splitInfo = info.substring("1");
         // 데이터 이동
-        new HouseItem("123");
     }
 }
 
