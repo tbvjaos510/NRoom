@@ -42,7 +42,7 @@ router.get('/getEnvir', (req, res) => {
     })
 })
 
-
+// 시도명을 주면 해당 시도의 평균 값, 안주면 전국 평군값
 router.get('/avgEnvir', (req, res) => {
     conn.query(`select avg(so2Value) as so2Value, avg(coValue) as coValue, avg(o3Value) as o3Value, avg(no2Value) as no2Value, avg(pm10Value) as pm10Value, avg(pm25Value) as pm25Value from envir ${req.query.시도명 ? `where sido like '%${req.query.시도명}%'`:''}`, (err, results)=>{
         if (err){
