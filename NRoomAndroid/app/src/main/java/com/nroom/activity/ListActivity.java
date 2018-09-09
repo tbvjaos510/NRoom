@@ -83,7 +83,7 @@ public class ListActivity extends AppCompatActivity {
             }
         });
 
-        mListView = (ListView)findViewById(R.id.sale_listview);
+        mListView = findViewById(R.id.sale_listview);
 
         dataSetting();
     }

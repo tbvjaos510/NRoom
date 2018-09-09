@@ -6,4 +6,8 @@
         android:font="@font/bm_jua_font"
         app:font="@font/bm_jua_font"
         tools:targetApi="o" />
+    <font
+        android:fontFamily="sans-serif"
+        app:fontFamily="sans-serif"
+        tools:targetApi="o" />
 </font-family>
