@@ -40,13 +40,13 @@ public class DetailActivity extends BaseActivity {
     }
 
     private void initViews() {
-        summary = bind(R.id.summary);
-        price = bind(R.id.price);
-        saleID = bind(R.id.sale_id);
-        area = bind(R.id.area);
-        adminExp = bind(R.id.admin_exp);
-        structure = bind(R.id.structure);
-        chart = bind(R.id.chart);
-        detailSummary = bind(R.id.detail_summary);
+        summary = findViewById(R.id.summary);
+        price = findViewById(R.id.price);
+        saleID = findViewById(R.id.sale_id);
+        area = findViewById(R.id.area);
+        adminExp = findViewById(R.id.admin_exp);
+        structure = findViewById(R.id.structure);
+        chart = findViewById(R.id.chart);
+        detailSummary = findViewById(R.id.detail_summary);
     }
 }

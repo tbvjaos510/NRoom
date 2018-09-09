@@ -8,7 +8,4 @@ import androidx.appcompat.app.AppCompatActivity;
 @SuppressLint("Registered")
 public class BaseActivity extends AppCompatActivity {
 
-    protected <T extends View> T bind(int id) {
-        return findViewById(id);
-    }
 }

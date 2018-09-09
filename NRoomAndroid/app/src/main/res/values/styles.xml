@@ -10,4 +10,11 @@
         <item name="fontFamily">@font/bm_jua_font</item>
     </style>
 
+    <style name="AppTheme.Transparent">
+        <item name="android:statusBarColor">@color/transparent_darker</item>
+        <item name="android:navigationBarColor">@color/transparent_dark</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+
 </resources>

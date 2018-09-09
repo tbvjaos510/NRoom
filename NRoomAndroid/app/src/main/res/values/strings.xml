@@ -7,4 +7,6 @@
     <string name="label_structure">구조</string>
     <string name="label_detail_summary">상세설명</string>
     <string name="label_sale_id">등록번호 :</string>
+    <string name="naver">NAVER</string>
+    <string name="action_settings">설정</string>
 </resources>
