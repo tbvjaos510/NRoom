@@ -2,6 +2,7 @@ package com.nroom.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -23,7 +24,6 @@ public class MainActivity extends BaseActivity {
         findViewById(R.id.toolbar_layout).setStateListAnimator(null);
         findViewById(R.id.toolbar_layout).setBackgroundResource(android.R.color.transparent);
         setSupportActionBar(findViewById(R.id.toolbar));
-
         Button btnMap = findViewById(R.id.btnMap);
         btnMap.setOnClickListener(view -> {
             Intent intent = new Intent(this, MapActivity.class);
