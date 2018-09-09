@@ -14,6 +14,7 @@ import com.nhn.android.mapviewer.overlay.NMapOverlayManager;
 import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay;
 import com.nhn.android.mapviewer.overlay.NMapResourceProvider;
 import com.nroom.R;
+import com.nroom.nmap.NMapPOIFlagType;
 import com.nroom.nmap.NMapViewerResourceProvider;
 
 public class MapActivity extends BaseActivity
@@ -82,7 +83,7 @@ public class MapActivity extends BaseActivity
     }
 
     private void addMarker() {
-        int markerId = 0;
+        int markerId = NMapPOIFlagType.PIN;
 
         // set POI data
         NMapPOIdata poiData = new NMapPOIdata(2, nMapViewerResourceProvider);
@@ -92,7 +93,8 @@ public class MapActivity extends BaseActivity
         poiData.endPOIdata();
 
         // create POI data overlay
-        NMapPOIdataOverlay poiDataOverlay = nOverlayManager.createPOIdataOverlay(poiData, getDrawable(R.drawable.ic_pin_01));
+        NMapPOIdataOverlay poiDataOverlay = nOverlayManager.createPOIdataOverlay(poiData, null);
+        poiDataOverlay.selectPOIitem(0, true);
     }
 
     /**
