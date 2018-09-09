@@ -5,17 +5,24 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.telecom.Call;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.nroom.R;
 import com.nroom.data.HouseItem;
 import com.nroom.listview.ListViewAdapter;
+import com.nroom.network.JSONTask;
 import com.nroom.recyclerview.HouseAdapter;
+
+import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -31,6 +38,8 @@ public class ListActivity extends BaseActivity {
             double latitude = location.getLatitude();
 
             String provider = location.getProvider();
+            Log.v("12312", longitude + "");
+            Log.v("12312", latitude + " ");
         }
 
         @Override
@@ -66,12 +75,12 @@ public class ListActivity extends BaseActivity {
         ToggleButton btnGps = findViewById(R.id.btnGps);
         final LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         btnGps.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 try {
                     if (btnGps.isChecked()) {
-                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, 1, mLocationListener);
+                        Log.v("12312","클릭");
+                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, mLocationListener);
                         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, // 등록할 위치제공자
                                 100, // 통지사이의 최소 시간간격 (miliSecond)
                                 1, // 통지사이의 최소 변경거리 (m)
@@ -89,19 +98,28 @@ public class ListActivity extends BaseActivity {
         recyclerView.setAdapter(houseAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
-
     private ArrayList<HouseItem> dataSetting() {
+
+        getHouseData();
 
         ArrayList<HouseItem> houseItems = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
             houseItems.add(new HouseItem(getDrawable(R.drawable.icon), "price_" + i, "location_" + i, "notice_" + i));
         }
-
+        houseItems.add(new HouseItem(getDrawable(R.drawable.icon), "price_" + 10, "location_" + 10, "notice_" + new HouseItem().getTest()));
         return houseItems;
     }
 
+<<<<<<< HEAD
     private void InitSpinner() {
+=======
+    private void getHouseData(String... condition) {
+        new JSONTask().execute("http://10.80.161.54:80/api/realtrade?시도명=서울특별시");
+    }
+
+    private void InitSpinner(View view) {
+>>>>>>> ad643604860018d9db49f648e42cf6bf45cc934d
         String before = selectedLocal;
         Spinner localSpinner = findViewById(R.id.localSpinner);
         localSpinner.setVisibility(View.VISIBLE);

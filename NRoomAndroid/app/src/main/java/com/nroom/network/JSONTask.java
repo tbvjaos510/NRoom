@@ -2,6 +2,10 @@ package com.nroom.network;
 
 import android.os.AsyncTask;
 import android.os.Debug;
+import android.util.Log;
+import android.widget.TextView;
+
+import com.nroom.data.HouseItem;
 
 import org.json.JSONObject;
 
@@ -26,22 +30,19 @@ public class JSONTask extends AsyncTask<String, String, String> {
             try {
                 URL url = new URL(urls[0]);
                 con = (HttpURLConnection) url.openConnection();
-
                 con.setRequestMethod("GET");
-                con.setDoInput(true);
+                //con.setDoInput(true);
                 con.connect();
 
                 InputStream stream = con.getInputStream();
 
                 reader = new BufferedReader(new InputStreamReader(stream));
-
                 StringBuilder builder = new StringBuilder();
 
                 String line = ""; // 나중에 클래스로 변환해야 될 듯
                 while ((line = reader.readLine()) != null) {
                     builder.append(line);
                 }
-
                 return builder.toString();
 
 
@@ -67,6 +68,9 @@ public class JSONTask extends AsyncTask<String, String, String> {
     @Override
     protected void onPostExecute(String result){
         super.onPostExecute(result);
+        Log.v("맵", result);
+        // 데이터 이동
+        new HouseItem("123");
     }
 }
 
