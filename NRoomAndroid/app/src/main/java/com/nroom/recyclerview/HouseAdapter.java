@@ -13,7 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class HouseAdapter extends RecyclerView.Adapter<HouseViewHolder> {
 
-    private final ArrayList<HouseItem> houseItems;
+    private ArrayList<HouseItem> houseItems;
+
+    public HouseAdapter() {
+        this(new ArrayList<>());
+    }
 
     public HouseAdapter(ArrayList<HouseItem> houseItems) {
         this.houseItems = houseItems;
@@ -38,5 +42,9 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseViewHolder> {
     @Override
     public int getItemCount() {
         return houseItems.size();
+    }
+
+    public void setHouseItems(ArrayList<HouseItem> houseItems) {
+        this.houseItems = houseItems;
     }
 }

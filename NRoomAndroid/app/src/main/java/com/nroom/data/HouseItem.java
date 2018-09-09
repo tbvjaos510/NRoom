@@ -39,7 +39,8 @@ public class HouseItem {
         return image;
     }
 
-    public HouseItem(String 시군구코드, String 시도명, String 시군구명, String id, String 지역번호, String 법정동, String 집종류, String 건물명, String 전용면적, String 층, String 건축년도, String 일, String 지번, String 거래금액, String 도로명코드) {
+    public HouseItem(Drawable image, String 시군구코드, String 시도명, String 시군구명, String id, String 지역번호, String 법정동, String 집종류, String 건물명, String 전용면적, String 층, String 건축년도, String 일, String 지번, String 거래금액, String 도로명코드) {
+        this.image = image;
         this.시군구코드 = 시군구코드;
         this.시도명 = 시도명;
         this.시군구명 = 시군구명;

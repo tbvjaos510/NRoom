@@ -1,10 +1,9 @@
 package com.nroom.network;
 
+import android.content.Context;
 import android.os.AsyncTask;
-import android.os.Debug;
-import android.util.Log;
-import android.widget.TextView;
 
+import com.nroom.R;
 import com.nroom.data.HouseItem;
 
 import org.json.JSONArray;
@@ -12,22 +11,25 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
-public class JSONTask extends AsyncTask<String, String, String> {
-    private List<HouseItem> lstHouse = new ArrayList<>();
+public class JSONTask extends AsyncTask<String, String, ArrayList<HouseItem>> {
+    private TaskListener taskListener;
+
+    private WeakReference<Context> contextWeakReference;
+
+    public JSONTask(Context context) {
+        this.contextWeakReference = new WeakReference<>(context);
+    }
+
     @Override
-    protected String doInBackground(String... urls) {
+    protected ArrayList<HouseItem> doInBackground(String... urls) {
         try {
             HttpURLConnection con = null;
             BufferedReader reader = null;
@@ -47,10 +49,33 @@ public class JSONTask extends AsyncTask<String, String, String> {
                 while ((line = reader.readLine()) != null) {
                     builder.append(line);
                 }
-                return builder.toString();
 
+                ArrayList<HouseItem> houseList = new ArrayList<>();
+                JSONObject jsonObject = new JSONObject(builder.toString());
+                JSONArray jsonArray = jsonObject.getJSONArray("data");
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject object = jsonArray.getJSONObject(i);
+                    houseList.add(new HouseItem(
+                            contextWeakReference.get().getDrawable(R.drawable.ic_house),
+                            object.getString("시군구코드"),
+                            object.getString("시도명"),
+                            object.getString("시군구명"),
+                            object.getString("id"),
+                            object.getString("지역번호"),
+                            object.getString("법정동"),
+                            object.getString("집종류"),
+                            object.getString("건물명"),
+                            object.getString("전용면적"),
+                            object.getString("층"),
+                            object.getString("건축년도"),
+                            object.getString("일"),
+                            object.getString("지번"),
+                            object.getString("거래금액"),
+                            object.getString("도로명코드")));
+                }
 
-            } catch (IOException e) {
+                return houseList;
+            } catch (IOException | JSONException e) {
                 e.printStackTrace();
             } finally {
                 if (con != null) {
@@ -67,57 +92,22 @@ public class JSONTask extends AsyncTask<String, String, String> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return new ArrayList<>();
     }
+
     @Override
-    protected void onPostExecute(String result){
-        //15
-        try {
-            JSONObject jsonObject = new JSONObject(result);
-            JSONArray jsonArray = jsonObject.getJSONArray("data");
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject object = jsonArray.getJSONObject(i);
-                lstHouse.add(new HouseItem(object.getString("시군구코드"),
-                        object.getString("시도명"),
-                        object.getString("시군구명"),
-                        object.getString("id"),
-                        object.getString("지역번호"),
-                        object.getString("법정동"),
-                        object.getString("집종류"),
-                        object.getString("건물명"),
-                        object.getString("전용면적"),
-                        object.getString("층"),
-                        object.getString("건축년도"),
-                        object.getString("일"),
-                        object.getString("지번"),
-                        object.getString("거래금액"),
-                        object.getString("도로명코드")));
-              /*  object.getString("시군구코드");
-                object.getString("시도명");
-                object.getString("시군구명");
-                object.getString("id");
-                object.getString("지역번호");
-                object.getString("법정동");
-                object.getString("집종류");
-                object.getString("건물명");
-                object.getString("전용면적");
-                object.getString("층");
-                object.getString("건축년도");
-                object.getString("일");
-                object.getString("지번");
-                object.getString("거래금액");
-                object.getString("도로명코드");
-                Log.v("12312", object.toString() + " ,");*/
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+    protected void onPostExecute(ArrayList<HouseItem> result) {
+        if (taskListener != null)
+            taskListener.onTaskFinished(result);
+    }
 
-      //  String subString = result.substring(0,result.indexOf('[',1));
-      //  String info = result.substring(subString.length() + 1, result.indexOf(']', 1));
+    public JSONTask setTaskListener(TaskListener taskListener) {
+        this.taskListener = taskListener;
+        return this;
+    }
 
-       // String[] splitInfo = info.substring("1");
-        // 데이터 이동
+    public interface TaskListener {
+        void onTaskFinished(ArrayList<HouseItem> houseList);
     }
 }
 

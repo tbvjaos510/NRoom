@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import com.nroom.R;
@@ -59,11 +60,11 @@ public class ListActivity extends BaseActivity {
 
         setSupportActionBar(findViewById(R.id.toolbar));
 
-        //Button btnLocal = findViewById(R.id.btnLocal);
+        Button btnLocal = findViewById(R.id.btnLocal);
         InitSpinner();
 
         recyclerView = findViewById(R.id.sale_recycler_view);
-        houseAdapter = new HouseAdapter(dataSetting());
+        houseAdapter = new HouseAdapter();
         recyclerView.setAdapter(houseAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -80,9 +81,15 @@ public class ListActivity extends BaseActivity {
     private void getHouseData(String local, String condition) {
         if (local != null) {
             if (condition == null) {
-                new JSONTask().execute("http://10.80.161.54:80/api/realtrade?시도명=" + local);
+                new JSONTask(this).setTaskListener(houseList ->  {
+                    houseAdapter.setHouseItems(houseList);
+                    houseAdapter.notifyDataSetChanged();
+                }).execute("http://10.80.161.54:80/api/realtrade?시도명=" + local);
             } else {
-                new JSONTask().execute("http://10.80.161.54:80/api/realtrade?시도명=" + local + "");
+                new JSONTask(this).setTaskListener(houseList ->  {
+                    houseAdapter.setHouseItems(houseList);
+                    houseAdapter.notifyDataSetChanged();
+                }).execute("http://10.80.161.54:80/api/realtrade?시도명=" + local + "");
             }
         }
     }
@@ -95,11 +102,11 @@ public class ListActivity extends BaseActivity {
         localSpinner.setVisibility(View.VISIBLE);
         conditionSpinner.setVisibility(View.VISIBLE);
 
-        ArrayAdapter localadapter = ArrayAdapter.createFromResource(this, R.array.location, android.R.layout.simple_spinner_item);
-        ArrayAdapter contionadapter = ArrayAdapter.createFromResource(this, R.array.condition, android.R.layout.simple_spinner_item);
+        ArrayAdapter localAdapter = ArrayAdapter.createFromResource(this, R.array.location, android.R.layout.simple_spinner_item);
+        ArrayAdapter contionAdapter = ArrayAdapter.createFromResource(this, R.array.condition, android.R.layout.simple_spinner_item);
 
-        localSpinner.setAdapter(localadapter);
-        conditionSpinner.setAdapter(contionadapter);
+        localSpinner.setAdapter(localAdapter);
+        conditionSpinner.setAdapter(contionAdapter);
 
         localSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -125,8 +132,6 @@ public class ListActivity extends BaseActivity {
                 selectedCondition = null;
             }
         });
-
-        localSpinner.callOnClick();
     }
     /*@Override
     protected void onCreate(Bundle savedInstanceState) {
