@@ -60,10 +60,8 @@ public class ListActivity extends BaseActivity {
 
         setSupportActionBar(findViewById(R.id.toolbar));
 
-        Button btnLocal = findViewById(R.id.btnLocal);
-        btnLocal.setOnClickListener(view -> {
-           // InitSpinner(view);
-        });
+        //Button btnLocal = findViewById(R.id.btnLocal);
+        InitSpinner();
 
         ToggleButton btnGps = findViewById(R.id.btnGps);
         final LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -103,7 +101,7 @@ public class ListActivity extends BaseActivity {
         return houseItems;
     }
 
-    private void InitSpinner(View view) {
+    private void InitSpinner() {
         String before = selectedLocal;
         Spinner localSpinner = findViewById(R.id.localSpinner);
         localSpinner.setVisibility(View.VISIBLE);
@@ -116,12 +114,7 @@ public class ListActivity extends BaseActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedLocal = (String) parent.getItemAtPosition(position);
-                if (!selectedLocal.equals(before)) {
-                    //TODO: 서버랑 연동
-                    localSpinner.setVisibility(View.INVISIBLE);
-                    selectedLocal = "서울특별시";
-                    return;
-                }
+
             }
 
             @Override
@@ -129,8 +122,9 @@ public class ListActivity extends BaseActivity {
                 selectedLocal = "";
             }
         });
-    }
 
+        localSpinner.callOnClick();
+    }
     /*@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

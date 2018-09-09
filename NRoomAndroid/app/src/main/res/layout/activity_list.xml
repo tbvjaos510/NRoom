@@ -30,10 +30,10 @@
 
             <Button
                 android:id="@+id/btnLocal"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="24pt"
-                android:layout_marginStart="60dp"
                 android:layout_marginEnd="10dp"
+                android:layout_marginStart="60dp"
                 android:background="@drawable/button_radius"
                 android:fontFamily="@font/bm_jua"
                 android:text="조건으로 검색"
@@ -43,9 +43,14 @@
 
             <Spinner
                 android:id="@+id/localSpinner"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="invisible" />
+ />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--tools:text="123123"-->
+                <!--android:textSize="15sp"/>-->
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
