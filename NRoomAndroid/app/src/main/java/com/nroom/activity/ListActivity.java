@@ -100,19 +100,17 @@ public class ListActivity extends BaseActivity {
     }
     private ArrayList<HouseItem> dataSetting() {
 
-        getHouseData();
 
         ArrayList<HouseItem> houseItems = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
-            houseItems.add(new HouseItem(getDrawable(R.drawable.icon), "price_" + i, "location_" + i, "notice_" + i));
+            houseItems.add(new HouseItem(getDrawable(R.drawable.icon), "price_" + i,  i, "notice_" + i));
         }
-        houseItems.add(new HouseItem(getDrawable(R.drawable.icon), "price_" + 10, "location_" + 10, "notice_" + new HouseItem().getTest()));
         return houseItems;
     }
 
-    private void getHouseData(String... condition) {
-        new JSONTask().execute("http://10.80.161.54:80/api/realtrade?시도명=서울특별시");
+    private void getHouseData(String local) {
+        new JSONTask().execute("http://10.80.161.54:80/api/realtrade?시도명="+local);
     }
 
     private void InitSpinner() {
@@ -128,7 +126,7 @@ public class ListActivity extends BaseActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedLocal = (String) parent.getItemAtPosition(position);
-
+                getHouseData(selectedLocal);
             }
 
             @Override
