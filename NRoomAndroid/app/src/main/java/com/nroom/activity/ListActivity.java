@@ -21,33 +21,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ListActivity extends BaseActivity {
-    private final LocationListener mLocationListener = new LocationListener() {
-        @Override
-        public void onLocationChanged(Location location) {
-            double longitude = location.getLongitude();
-            double latitude = location.getLatitude();
-
-            String provider = location.getProvider();
-            Log.v("12312", longitude + "");
-            Log.v("12312", latitude + " ");
-        }
-
-        @Override
-        public void onStatusChanged(String provider, int status, Bundle extras) {
-
-        }
-
-        @Override
-        public void onProviderEnabled(String provider) {
-
-        }
-
-        @Override
-        public void onProviderDisabled(String provider) {
-
-        }
-    };
-
     private String selectedLocal = "서울특별시";
     private String selectedCondition = "";
     private RecyclerView recyclerView;
