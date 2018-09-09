@@ -55,23 +55,46 @@ public class JSONTask extends AsyncTask<String, String, ArrayList<HouseItem>> {
                 JSONArray jsonArray = jsonObject.getJSONArray("data");
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject object = jsonArray.getJSONObject(i);
-                    houseList.add(new HouseItem(
-                            contextWeakReference.get().getDrawable(R.drawable.ic_house),
-                            object.getString("시군구코드"),
-                            object.getString("시도명"),
-                            object.getString("시군구명"),
-                            object.getString("id"),
-                            object.getString("지역번호"),
-                            object.getString("법정동"),
-                            object.getString("집종류"),
-                            object.getString("건물명"),
-                            object.getString("전용면적"),
-                            object.getString("층"),
-                            object.getString("건축년도"),
-                            object.getString("일"),
-                            object.getString("지번"),
-                            object.getString("거래금액"),
-                            object.getString("도로명코드")));
+                    if(object.getString("월세금액") != null || object.getString("보증금") != null ){
+                        houseList.add(new HouseItem(
+                                contextWeakReference.get().getDrawable(R.drawable.ic_house),
+                                object.getString("시군구코드"),
+                                object.getString("시도명"),
+                                object.getString("시군구명"),
+                                object.getString("id"),
+                                object.getString("지역번호"),
+                                object.getString("법정동"),
+                                object.getString("집종류"),
+                                object.getString("건물명"),
+                                object.getString("전용면적"),
+                                object.getString("층"),
+                                object.getString("건축년도"),
+                                object.getString("일"),
+                                object.getString("지번"),
+                                object.getString("거래금액"),
+                                object.getString("도로명코드"),
+                                object.getString("월세금액"),
+                                object.getString("보증금")));
+                    }
+                    /*else{
+                        houseList.add(new HouseItem(
+                                contextWeakReference.get().getDrawable(R.drawable.ic_house),
+                                object.getString("시군구코드"),
+                                object.getString("시도명"),
+                                object.getString("시군구명"),
+                                object.getString("id"),
+                                object.getString("지역번호"),
+                                object.getString("법정동"),
+                                object.getString("집종류"),
+                                object.getString("건물명"),
+                                object.getString("전용면적"),
+                                object.getString("층"),
+                                object.getString("건축년도"),
+                                object.getString("일"),
+                                object.getString("지번"),
+                                object.getString("거래금액"),
+                                object.getString("도로명코드")));
+                    }*/
                 }
 
                 return houseList;

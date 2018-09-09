@@ -25,6 +25,8 @@ public class HouseItem {
     private String 지번;
     private String 거래금액;
     private String 도로명코드;
+    private String 월세금액;
+    private String 보증금;
     private double 위도;
     private double 경도;
 
@@ -39,6 +41,46 @@ public class HouseItem {
         return image;
     }
 
+    public void set월세금액(String 월세금액) {
+        this.월세금액 = 월세금액;
+    }
+
+    public void set보증금(String 보증금) {
+        this.보증금 = 보증금;
+    }
+
+    public String get월세금액() {
+
+        return 월세금액;
+    }
+
+    public String get보증금() {
+        return 보증금;
+    }
+
+    public HouseItem(Drawable image, String 시군구코드, String 시도명, String 시군구명, String id, String 지역번호, String 법정동, String 집종류, String 건물명, String 전용면적, String 층, String 건축년도, String 일, String 지번, String 거래금액, String 도로명코드, String 월세금액, String  보증금) {
+        this.image = image;
+        this.시군구코드 = 시군구코드;
+        this.시도명 = 시도명;
+        this.시군구명 = 시군구명;
+        this.id = id;
+        this.지역번호 = 지역번호;
+        this.법정동 = 법정동;
+        this.집종류 = 집종류;
+        this.건물명 = 건물명;
+        this.전용면적 = 전용면적;
+        this.층 = 층;
+        this.건축년도 = 건축년도;
+        this.일 = 일;
+        this.지번 = 지번;
+        this.거래금액 = 거래금액;
+        this.도로명코드 = 도로명코드;
+        this.월세금액 = 월세금액;
+        this.보증금 = 보증금;
+
+        this.위도 = 33.333;
+        this.경도 = 33.333;
+    }
     public HouseItem(Drawable image, String 시군구코드, String 시도명, String 시군구명, String id, String 지역번호, String 법정동, String 집종류, String 건물명, String 전용면적, String 층, String 건축년도, String 일, String 지번, String 거래금액, String 도로명코드) {
         this.image = image;
         this.시군구코드 = 시군구코드;
@@ -59,7 +101,6 @@ public class HouseItem {
         this.위도 = 33.333;
         this.경도 = 33.333;
     }
-
     public void set시군구코드(String 시군구코드) {
         this.시군구코드 = 시군구코드;
     }
