@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="condition">
+        <item>미세먼지</item>
+        <item>교통</item>
+        <item>치안</item>
+    </string-array>
+</resources>

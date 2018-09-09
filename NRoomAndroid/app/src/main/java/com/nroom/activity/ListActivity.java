@@ -59,6 +59,7 @@ public class ListActivity extends BaseActivity {
     };
 
     private String selectedLocal = "서울특별시";
+    private String selectedCondition = "";
     private RecyclerView recyclerView;
     private HouseAdapter houseAdapter;
 
@@ -72,35 +73,12 @@ public class ListActivity extends BaseActivity {
         //Button btnLocal = findViewById(R.id.btnLocal);
         InitSpinner();
 
-        ToggleButton btnGps = findViewById(R.id.btnGps);
-        final LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        btnGps.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    if (btnGps.isChecked()) {
-                        Log.v("12312","클릭");
-                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, mLocationListener);
-                        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, // 등록할 위치제공자
-                                100, // 통지사이의 최소 시간간격 (miliSecond)
-                                1, // 통지사이의 최소 변경거리 (m)
-                                mLocationListener);
-                    } else {
-                        locationManager.removeUpdates(mLocationListener);
-                    }
-                } catch (SecurityException ignore) {
-                }
-            }
-        });
-
         recyclerView = findViewById(R.id.sale_recycler_view);
         houseAdapter = new HouseAdapter(dataSetting());
         recyclerView.setAdapter(houseAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
     private ArrayList<HouseItem> dataSetting() {
-
-
         ArrayList<HouseItem> houseItems = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
@@ -109,18 +87,31 @@ public class ListActivity extends BaseActivity {
         return houseItems;
     }
 
-    private void getHouseData(String local) {
-        new JSONTask().execute("http://10.80.161.54:80/api/realtrade?시도명="+local);
+    private void getHouseData(String local, String condition) {
+        if(local != null) {
+            if (condition == null) {
+                new JSONTask().execute("http://10.80.161.54:80/api/realtrade?시도명=" + local);
+            }
+
+            else{
+                new JSONTask().execute("http://10.80.161.54:80/api/realtrade?시도명=" + local + "" )
+            }
+        }
     }
 
     private void InitSpinner() {
         String before = selectedLocal;
         Spinner localSpinner = findViewById(R.id.localSpinner);
+        Spinner conditionSpinner = findViewById(R.id.conditionSpinner);
+
         localSpinner.setVisibility(View.VISIBLE);
+        conditionSpinner.setVisibility(View.VISIBLE);
 
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.location, android.R.layout.simple_spinner_item);
+        ArrayAdapter localadapter = ArrayAdapter.createFromResource(this, R.array.location, android.R.layout.simple_spinner_item);
+        ArrayAdapter contionadapter = ArrayAdapter.createFromResource(this, R.array.condition, android.R.layout.simple_spinner_item);
 
-        localSpinner.setAdapter(adapter);
+        localSpinner.setAdapter(localadapter);
+        conditionSpinner.setAdapter(contionadapter);
 
         localSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -132,6 +123,13 @@ public class ListActivity extends BaseActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 selectedLocal = "";
+            }
+        });
+
+        conditionSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectedCondition = (String) parent.getItemAtPosition(position);
             }
         });
 
@@ -210,5 +208,30 @@ public class ListActivity extends BaseActivity {
             }
         });
         return;
-    }*/
+    }
+
+
+
+
+        ToggleButton btnGps = findViewById(R.id.btnGps);
+        final LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        btnGps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    if (btnGps.isChecked()) {
+                        Log.v("12312","클릭");
+                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, mLocationListener);
+                        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, // 등록할 위치제공자
+                                100, // 통지사이의 최소 시간간격 (miliSecond)
+                                1, // 통지사이의 최소 변경거리 (m)
+                                mLocationListener);
+                    } else {
+                        locationManager.removeUpdates(mLocationListener);
+                    }
+                } catch (SecurityException ignore) {
+                }
+            }
+        });
+    */
 }
