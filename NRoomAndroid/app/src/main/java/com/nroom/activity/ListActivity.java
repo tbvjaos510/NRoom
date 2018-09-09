@@ -62,7 +62,7 @@ public class ListActivity extends BaseActivity {
 
         Button btnLocal = findViewById(R.id.btnLocal);
         btnLocal.setOnClickListener(view -> {
-            InitSpinner(view);
+           // InitSpinner(view);
         });
 
         ToggleButton btnGps = findViewById(R.id.btnGps);
