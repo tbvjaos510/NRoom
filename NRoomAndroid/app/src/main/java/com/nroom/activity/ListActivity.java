@@ -37,7 +37,7 @@ public class ListActivity extends BaseActivity {
         InitSpinner();
 
         recyclerView = findViewById(R.id.sale_recycler_view);
-        houseAdapter = new HouseAdapter();
+        houseAdapter = new HouseAdapter(this);
         recyclerView.setAdapter(houseAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
