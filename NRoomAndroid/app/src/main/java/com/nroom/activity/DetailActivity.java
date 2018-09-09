@@ -24,7 +24,7 @@ public class DetailActivity extends BaseActivity {
         setContentView(R.layout.activity_detail);
 
         initViews();
-        //bindViews();
+        bindViews();
 
     }
 
