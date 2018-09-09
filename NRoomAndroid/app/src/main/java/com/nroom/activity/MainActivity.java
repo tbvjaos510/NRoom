@@ -36,10 +36,27 @@ public class MainActivity extends BaseActivity {
 
         mAdView = bind(R.id.adView);
         AdRequest.Builder builder = new AdRequest.Builder();
-                /*if (BuildConfig.DEBUG) {
+                if (BuildConfig.DEBUG) {
                     builder.addTestDevice(AdRequest.DEVICE_ID_EMULATOR);
                     builder.setRequestAgent("android_studio:ad_template");
-                }*/
+                }
         mAdView.loadAd(builder.build());
+    }
+    @Override
+    protected void onDestroy() {
+        mAdView.destroy();
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        mAdView.pause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        mAdView.resume();
+        super.onResume();
     }
 }
