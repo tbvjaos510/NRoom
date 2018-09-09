@@ -111,15 +111,11 @@ public class ListActivity extends BaseActivity {
         return houseItems;
     }
 
-<<<<<<< HEAD
-    private void InitSpinner() {
-=======
     private void getHouseData(String... condition) {
         new JSONTask().execute("http://10.80.161.54:80/api/realtrade?시도명=서울특별시");
     }
 
-    private void InitSpinner(View view) {
->>>>>>> ad643604860018d9db49f648e42cf6bf45cc934d
+    private void InitSpinner() {
         String before = selectedLocal;
         Spinner localSpinner = findViewById(R.id.localSpinner);
         localSpinner.setVisibility(View.VISIBLE);
