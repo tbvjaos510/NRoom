@@ -30,9 +30,9 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseViewHolder> {
         HouseItem houseItem = houseItems.get(position);
 
         holder.image.setImageDrawable(houseItem.getImage());
-        holder.price.setText(houseItem.getPrice());
-        holder.location.setText(houseItem.getLocation());
-        holder.notice.setText(houseItem.getNotice());
+        holder.price.setText(houseItem.get거래금액());
+        holder.location.setText(houseItem.get경도() + "");
+        holder.notice.setText(houseItem.get법정동());
     }
 
     @Override
