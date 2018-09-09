@@ -68,7 +68,7 @@ public class JSONTask extends AsyncTask<String, String, String> {
     @Override
     protected void onPostExecute(String result){
         super.onPostExecute(result);
-        Log.v("맵", result);
+        Log.v("맵", result + "");
         // 데이터 이동
         new HouseItem("123");
     }
