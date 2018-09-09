@@ -77,7 +77,7 @@ public class NMapViewerResourceProvider extends NMapResourceProvider implements
 
         int resourceId = findResourceIdForMarker(markerId, focused);
         if (resourceId > 0) {
-            marker = mContext.getResources().getDrawable(resourceId);
+            marker = mContext.getDrawable(resourceId);
         } else {
             resourceId = 4 * markerId;
             if (focused) {
@@ -130,7 +130,7 @@ public class NMapViewerResourceProvider extends NMapResourceProvider implements
 
         Drawable marker = null;
         if (resourceId > 0) {
-            marker = mContext.getResources().getDrawable(resourceId);
+            marker = mContext.getDrawable(resourceId);
         }
 
         if (marker != null) {
@@ -250,8 +250,8 @@ public class NMapViewerResourceProvider extends NMapResourceProvider implements
     public Drawable[] getLocationDot() {
         Drawable[] drawable = new Drawable[2];
 
-        drawable[0] = mContext.getResources().getDrawable(R.drawable.new_gray_dot);
-        drawable[1] = mContext.getResources().getDrawable(R.drawable.new_blue_dot_glow);
+        drawable[0] = mContext.getDrawable(R.drawable.new_gray_dot);
+        drawable[1] = mContext.getDrawable(R.drawable.new_blue_dot_glow);
 
         for (int i = 0; i < drawable.length; i++) {
             int w = drawable[i].getIntrinsicWidth() / 2;
@@ -266,7 +266,7 @@ public class NMapViewerResourceProvider extends NMapResourceProvider implements
     @Override
     public Drawable getDirectionArrow() {
 
-        Drawable drawable = mContext.getResources().getDrawable(R.drawable.blue_cone_120_satellite);
+        Drawable drawable = mContext.getDrawable(R.drawable.blue_cone_120_satellite);
 
         if (drawable != null) {
             int w = drawable.getIntrinsicWidth() / 2;
@@ -373,12 +373,12 @@ public class NMapViewerResourceProvider extends NMapResourceProvider implements
             NMapPOIitem poiItem = (NMapPOIitem)item;
 
             if (poiItem.showRightButton()) {
-                Drawable drawable = mContext.getResources().getDrawable(R.drawable.bg_speech);
+                Drawable drawable = mContext.getDrawable(R.drawable.bg_speech);
                 return drawable;
             }
         }
 
-        Drawable drawable = mContext.getResources().getDrawable(R.drawable.pin_ballon_bg);
+        Drawable drawable = mContext.getDrawable(R.drawable.pin_ballon_bg);
 
         return drawable;
     }
@@ -404,9 +404,9 @@ public class NMapViewerResourceProvider extends NMapResourceProvider implements
             if (poiItem.showRightButton()) {
                 Drawable[] drawable = new Drawable[3];
 
-                drawable[0] = mContext.getResources().getDrawable(R.drawable.btn_green_normal);
-                drawable[1] = mContext.getResources().getDrawable(R.drawable.btn_green_pressed);
-                drawable[2] = mContext.getResources().getDrawable(R.drawable.btn_green_highlight);
+                drawable[0] = mContext.getDrawable(R.drawable.btn_green_normal);
+                drawable[1] = mContext.getDrawable(R.drawable.btn_green_pressed);
+                drawable[2] = mContext.getDrawable(R.drawable.btn_green_highlight);
 
                 return drawable;
             }
@@ -425,9 +425,9 @@ public class NMapViewerResourceProvider extends NMapResourceProvider implements
 
                 switch (poiItem.getRightAccessoryId()) {
                     case NMapPOIFlagType.CLICKABLE_ARROW:
-                        drawable[0] = mContext.getResources().getDrawable(R.drawable.pin_ballon_arrow);
-                        drawable[1] = mContext.getResources().getDrawable(R.drawable.pin_ballon_on_arrow);
-                        drawable[2] = mContext.getResources().getDrawable(R.drawable.pin_ballon_on_arrow);
+                        drawable[0] = mContext.getDrawable(R.drawable.pin_ballon_arrow);
+                        drawable[1] = mContext.getDrawable(R.drawable.pin_ballon_on_arrow);
+                        drawable[2] = mContext.getDrawable(R.drawable.pin_ballon_on_arrow);
                         break;
                 }
 
