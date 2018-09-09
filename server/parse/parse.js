@@ -61,27 +61,26 @@ function Parse() {
 
 }
 var jusodata
-function updateJuso2(i){
-    juso(jusodata[i].법정동, jusodata[i].지번, jusodata[i].건물명, (data)=>{
+function updateJuso2(i) {
+    juso(jusodata[i].법정동, jusodata[i].지번, jusodata[i].건물명, (data) => {
         if (data && data.rnMgtSn)
-        conn.query(`update hometrade set 도로명코드 = ${data.rnMgtSn} where id = ${jusodata[i].id}`, (err, result) => {
-     //       console.log('end ' + i)
-        })
-        else{
-            console.log(jusodata[i].법정동, jusodata[i].지번, jusodata[i].건물명,i, 'not found')
+            conn.query(`update hometrade set 도로명코드 = ${data.rnMgtSn} where id = ${jusodata[i].id}`, (err, result) => {
+                //       console.log('end ' + i)
+            })
+        else {
+            console.log(jusodata[i].법정동, jusodata[i].지번, jusodata[i].건물명, i, 'not found')
             // console.error('not found ' + i)
         }
     })
 }
-
 var v = 0;
-function updateJuso(){
+function updateJuso() {
     conn.query('select * from hometrade', (err, results) => {
         if (err) throw err
         jusodata = results
-        
-        interval = setInterval(()=>{
-       //     console.log('start ' + v)
+
+        interval = setInterval(() => {
+            //     console.log('start ' + v)
             if (jusodata.length <= v)
                 return clearInterval(interval)
             updateJuso2(v)
@@ -90,8 +89,34 @@ function updateJuso(){
 
     })
 }
-updateJuso()
+var locale = ["서울", "부산", "대구", "인천", "광주", "대전", "울산", "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주", "세종"]
+function updateEnvir(i) {
+    api(url.Air.getCtprvnList(locale[i], "HOUR", 100), function (data) {
+
+        data = data.items.item
+        console.log(data)
+        if (!data[0])
+            data = new Array(data)
+        for (var t of data) {
+            conn.query(`insert into envir values ('${t.dataTime}', '${locale[i]}', '${t.cityName}', '${t.so2Value}', '${t.coValue}', '${t.o3Value}', '${t.no2Value}', '${t.pm10Value}', '${t.pm25Value}')`)
+        }
+        console.log('end ' + i)
+    })
+}
+function Envir() {
+    var i = 0
+    interval = setInterval(() => {
+        updateEnvir(i)
+        i++
+        if (locale.length <= i)
+            clearInterval(interval)
+    }, 100)
+}
+//updateEnvir(16)
+//api(url.Air.getCtprvnList(locale[16], "HOUR", 100), data => console.log(data.items.item))
+//updateJuso()
 //juso("시곡동", "", (data)=>console.log(data))
 //Parse()
 //getData(11530).then(() => conn.end())
 // conn.end()
+//Envir()

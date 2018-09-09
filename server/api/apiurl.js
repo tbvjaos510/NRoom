@@ -135,8 +135,6 @@ class Air {
         return this.airKoreaAPI + `ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?sidoName=${encodeURIComponent(sido)}&pageNo=1&numOfRows=10&ServiceKey=${apikey}&ver=1.3`
     }
 
-    
-
 }
 module.exports.Home = Home
 
