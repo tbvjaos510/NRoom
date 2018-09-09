@@ -101,8 +101,9 @@ public class ListActivity extends BaseActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
     private ArrayList<HouseItem> dataSetting() {
-        new JSONTask().execute("http://10.80.161.54:80/api/realtrade?시도명=서울특별시");
-        Log.v("12312","4");
+
+        getHouseData();
+
         ArrayList<HouseItem> houseItems = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
@@ -110,6 +111,10 @@ public class ListActivity extends BaseActivity {
         }
         houseItems.add(new HouseItem(getDrawable(R.drawable.icon), "price_" + 10, "location_" + 10, "notice_" + new HouseItem().getTest()));
         return houseItems;
+    }
+
+    private void getHouseData(String... condition) {
+        new JSONTask().execute("http://10.80.161.54:80/api/realtrade?시도명=서울특별시");
     }
 
     private void InitSpinner(View view) {
