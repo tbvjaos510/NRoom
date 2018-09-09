@@ -2,6 +2,7 @@ package com.nroom.network;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.nroom.R;
 import com.nroom.data.HouseItem;
@@ -55,7 +56,8 @@ public class JSONTask extends AsyncTask<String, String, ArrayList<HouseItem>> {
                 JSONArray jsonArray = jsonObject.getJSONArray("data");
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject object = jsonArray.getJSONObject(i);
-                    if(object.getString("월세금액") != null || object.getString("보증금") != null ){
+                    Log.v("12312",object.has("월세금액") + "");
+                    if (object.has("월세금액")) {
                         houseList.add(new HouseItem(
                                 contextWeakReference.get().getDrawable(R.drawable.ic_house),
                                 object.getString("시군구코드"),
@@ -73,10 +75,9 @@ public class JSONTask extends AsyncTask<String, String, ArrayList<HouseItem>> {
                                 object.getString("지번"),
                                 object.getString("거래금액"),
                                 object.getString("도로명코드"),
-                                object.getString("월세금액"),
-                                object.getString("보증금")));
-                    }
-                    /*else{
+                                Integer.parseInt(object.getString("월세금액")),
+                                Integer.parseInt(object.getString("보증금"))));
+                    } else {
                         houseList.add(new HouseItem(
                                 contextWeakReference.get().getDrawable(R.drawable.ic_house),
                                 object.getString("시군구코드"),
@@ -94,7 +95,7 @@ public class JSONTask extends AsyncTask<String, String, ArrayList<HouseItem>> {
                                 object.getString("지번"),
                                 object.getString("거래금액"),
                                 object.getString("도로명코드")));
-                    }*/
+                    }
                 }
 
                 return houseList;

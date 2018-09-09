@@ -25,8 +25,8 @@ public class HouseItem {
     private String 지번;
     private String 거래금액;
     private String 도로명코드;
-    private String 월세금액;
-    private String 보증금;
+    private int 월세금액;
+    private int 보증금;
     private double 위도;
     private double 경도;
 
@@ -41,24 +41,24 @@ public class HouseItem {
         return image;
     }
 
-    public void set월세금액(String 월세금액) {
+    public void set월세금액(int 월세금액) {
         this.월세금액 = 월세금액;
     }
 
-    public void set보증금(String 보증금) {
+    public void set보증금(int 보증금) {
         this.보증금 = 보증금;
     }
 
-    public String get월세금액() {
+    public int get월세금액() {
 
         return 월세금액;
     }
 
-    public String get보증금() {
+    public int get보증금() {
         return 보증금;
     }
 
-    public HouseItem(Drawable image, String 시군구코드, String 시도명, String 시군구명, String id, String 지역번호, String 법정동, String 집종류, String 건물명, String 전용면적, String 층, String 건축년도, String 일, String 지번, String 거래금액, String 도로명코드, String 월세금액, String  보증금) {
+    public HouseItem(Drawable image, String 시군구코드, String 시도명, String 시군구명, String id, String 지역번호, String 법정동, String 집종류, String 건물명, String 전용면적, String 층, String 건축년도, String 일, String 지번, String 거래금액, String 도로명코드, int 월세금액, int  보증금) {
         this.image = image;
         this.시군구코드 = 시군구코드;
         this.시도명 = 시도명;
