@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<font-family xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<font-family xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <font
         android:font="@font/bm_jua_font"
         app:font="@font/bm_jua_font"
-        tools:targetApi="o" />
-    <font
-        android:fontFamily="sans-serif"
-        app:fontFamily="sans-serif"
         tools:targetApi="o" />
 </font-family>

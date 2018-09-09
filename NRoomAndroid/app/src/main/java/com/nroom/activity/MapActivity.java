@@ -6,8 +6,7 @@ import com.nhn.android.maps.NMapController;
 import com.nhn.android.maps.NMapView;
 import com.nroom.R;
 
-import androidx.appcompat.app.AppCompatActivity;
-public class MapActivity extends AppCompatActivity {
+public class MapActivity extends BaseActivity {
 
     // CLIENT ID
     public static final String CLIENT_ID = "qxSxM3dHkv_nQodnLE34";  //발급받은 Client ID
@@ -23,8 +22,9 @@ public class MapActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
-        setSupportActionBar(findViewById(R.id.toolbar));
+        findViewById(R.id.toolbar_layout).setStateListAnimator(null);
         findViewById(R.id.toolbar_layout).setBackgroundResource(R.color.transparent_dark);
+        setSupportActionBar(findViewById(R.id.toolbar));
     }
 
 

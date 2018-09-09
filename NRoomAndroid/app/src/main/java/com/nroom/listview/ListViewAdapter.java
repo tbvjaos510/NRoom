@@ -2,7 +2,6 @@ package com.nroom.listview;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +41,7 @@ public class ListViewAdapter extends BaseAdapter{
             convertView = inflater.inflate(R.layout.listview_item, parent, false);
         }
 
-        ImageView iv_img = (ImageView) convertView.findViewById(R.id.houseimage);
+        ImageView iv_img = (ImageView) convertView.findViewById(R.id.image_house);
         TextView tv_price = (TextView) convertView.findViewById(R.id.price);
         TextView tv_location = (TextView) convertView.findViewById(R.id.location);
         TextView tv_notice = (TextView) convertView.findViewById(R.id.notice);

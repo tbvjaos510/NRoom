@@ -17,6 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <!--TODO Image-->
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
@@ -81,7 +82,7 @@
                 tools:text="월세 50 / 50" />
 
             <LinearLayout
-                android:id="@+id/sale_layout"
+                android:id="@+id/sale_id_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -123,7 +124,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/admin_exp_layout"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sale_layout">
+                app:layout_constraintTop_toBottomOf="@+id/sale_id_layout">
 
                 <TextView
                     android:id="@+id/area"
@@ -151,9 +152,9 @@
                 android:layout_marginBottom="8dp"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/sale_layout"
-                app:layout_constraintStart_toStartOf="@+id/sale_layout"
-                app:layout_constraintTop_toBottomOf="@+id/sale_layout">
+                app:layout_constraintEnd_toEndOf="@+id/sale_id_layout"
+                app:layout_constraintStart_toStartOf="@+id/sale_id_layout"
+                app:layout_constraintTop_toBottomOf="@+id/sale_id_layout">
 
                 <TextView
                     android:id="@+id/admin_exp"
@@ -181,7 +182,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/admin_exp_layout"
-                app:layout_constraintTop_toBottomOf="@+id/sale_layout">
+                app:layout_constraintTop_toBottomOf="@+id/sale_id_layout">
 
                 <TextView
                     android:id="@+id/structure"
