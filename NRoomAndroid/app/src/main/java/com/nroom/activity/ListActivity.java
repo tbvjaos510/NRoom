@@ -37,7 +37,7 @@ public class ListActivity extends BaseActivity {
         InitSpinner();
 
         recyclerView = findViewById(R.id.sale_recycler_view);
-        houseAdapter = new HouseAdapter();
+        houseAdapter = new HouseAdapter(this);
         recyclerView.setAdapter(houseAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -54,15 +54,9 @@ public class ListActivity extends BaseActivity {
     private void getHouseData(String local, String condition) {
         if (local != null) {
             if (condition == null) {
-                new JSONTask(this).setTaskListener(houseList ->  {
-                    houseAdapter.setHouseItems(houseList);
-                    houseAdapter.notifyDataSetChanged();
-                }).execute("http://10.80.161.54:80/api/realtrade?시도명=" + local);
+                new JSONTask(this).setTaskListener(houseList -> houseAdapter.setHouseItems(houseList)).execute("http://10.80.161.54:80/api/realtrade?시도명=" + local);
             } else {
-                new JSONTask(this).setTaskListener(houseList ->  {
-                    houseAdapter.setHouseItems(houseList);
-                    houseAdapter.notifyDataSetChanged();
-                }).execute("http://10.80.161.54:80/api/realtrade?시도명=" + local + "");
+                new JSONTask(this).setTaskListener(houseList -> houseAdapter.setHouseItems(houseList)).execute("http://10.80.161.54:80/api/realtrade?시도명=" + local + "");
             }
         }
     }
