@@ -43,15 +43,6 @@ public class ListActivity extends BaseActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    private ArrayList<HouseItem> dataSetting() {
-        ArrayList<HouseItem> houseItems = new ArrayList<>();
-
-        for (int i = 0; i < 10; i++) {
-            houseItems.add(new HouseItem(getDrawable(R.drawable.icon), "price_" + i, i, "notice_" + i));
-        }
-        return houseItems;
-    }
-
     private void getHouseData(String local, String condition) {
         if (local != null) {
             if (selectedCondition.equals("전체")) {
@@ -114,11 +105,15 @@ public class ListActivity extends BaseActivity {
     }
 
     public void onCheckboxClicked(View view) {
-        CheckBox Month = (CheckBox) findViewById(R.id.Month);
-        CheckBox Year = (CheckBox) findViewById(R.id.Year);
-        CheckBox Trade = (CheckBox) findViewById(R.id.Trade);
+        CheckBox Month = findViewById(R.id.Month);
+        CheckBox Year = findViewById(R.id.Year);
+        CheckBox Trade = findViewById(R.id.Trade);
 
-        new HouseAdapter(Month.isChecked(), Year.isChecked(), Trade.isChecked());
+        houseAdapter.setShowMonth(Month.isChecked());
+        houseAdapter.setShowYear(Year.isChecked());
+        houseAdapter.setShowTrade(Trade.isChecked());
+
+        houseAdapter.updateList();
     }
     /*@Override
     protected void onCreate(Bundle savedInstanceState) {
