@@ -29,6 +29,7 @@ public class HouseItem {
     private int 보증금;
     private double 위도;
     private double 경도;
+    private int 대피소수;
 
     public HouseItem(Drawable image, String price, double location, String notice) {
         this.image = image;
@@ -58,7 +59,7 @@ public class HouseItem {
         return 보증금;
     }
 
-    public HouseItem(Drawable image, String 시군구코드, String 시도명, String 시군구명, String id, String 지역번호, String 법정동, String 집종류, String 건물명, String 전용면적, String 층, String 건축년도, String 일, String 지번, String 도로명코드, int 월세금액, int  보증금, double lat, double lng) {
+    public HouseItem(Drawable image, String 시군구코드, String 시도명, String 시군구명, String id, String 지역번호, String 법정동, String 집종류, String 건물명, String 전용면적, String 층, String 건축년도, String 일, String 지번, String 도로명코드, int 월세금액, int  보증금, double lat, double lng, int 대피소수) {
         this.image = image;
         this.시군구코드 = 시군구코드;
         this.시도명 = 시도명;
@@ -79,8 +80,14 @@ public class HouseItem {
 
         this.위도 = lat;
         this.경도 = lng;
+        this.대피소수 = 대피소수;
     }
-    public HouseItem(Drawable image, String 시군구코드, String 시도명, String 시군구명, String id, String 지역번호, String 법정동, String 집종류, String 건물명, String 전용면적, String 층, String 건축년도, String 일, String 지번, String 거래금액, String 도로명코드, double lat, double lng) {
+
+    public int get대피소수() {
+        return 대피소수;
+    }
+
+    public HouseItem(Drawable image, String 시군구코드, String 시도명, String 시군구명, String id, String 지역번호, String 법정동, String 집종류, String 건물명, String 전용면적, String 층, String 건축년도, String 일, String 지번, String 거래금액, String 도로명코드, double lat, double lng, int 대피소수 ) {
         this.image = image;
         this.시군구코드 = 시군구코드;
         this.시도명 = 시도명;
@@ -89,6 +96,7 @@ public class HouseItem {
         this.지역번호 = 지역번호;
         this.법정동 = 법정동;
         this.집종류 = 집종류;
+
         this.건물명 = 건물명;
         this.전용면적 = 전용면적;
         this.층 = 층;
@@ -99,6 +107,7 @@ public class HouseItem {
         this.도로명코드 = 도로명코드;
         this.위도 = lat;
         this.경도 = lng;
+        this.대피소수 = 대피소수;
     }
     public void set시군구코드(String 시군구코드) {
         this.시군구코드 = 시군구코드;
