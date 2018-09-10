@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 
 import com.nroom.R;
@@ -22,7 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class ListActivity extends BaseActivity {
     private String selectedLocal = "서울특별시";
-    private String selectedCondition = "";
+    private String selectedCondition = "전체";
     private RecyclerView recyclerView;
     private HouseAdapter houseAdapter;
 
@@ -33,7 +34,7 @@ public class ListActivity extends BaseActivity {
 
         setSupportActionBar(findViewById(R.id.toolbar));
 
-        Button btnLocal = findViewById(R.id.btnLocal);
+    //    Button btnLocal = findViewById(R.id.btnLocal);
         InitSpinner();
 
         recyclerView = findViewById(R.id.sale_recycler_view);
@@ -53,7 +54,7 @@ public class ListActivity extends BaseActivity {
 
     private void getHouseData(String local, String condition) {
         if (local != null) {
-            if (condition == null) {
+            if (selectedCondition.equals("전체")) {
                 new JSONTask(this).setTaskListener(houseList ->  {
                     houseAdapter.setHouseItems(houseList);
                 }).execute("http://10.80.161.54:80/api/juntrade?시도명=" + local);
@@ -62,8 +63,11 @@ public class ListActivity extends BaseActivity {
                 }).execute("http://10.80.161.54:80/api/realtrade?시도명=" + local);
             } else {
                 new JSONTask(this).setTaskListener(houseList ->  {
+                    houseAdapter.setHouseItems(houseList);
+                }).execute("http://10.80.161.54:80/api/juntrade?시도명=" + local + "&검색조건=" + selectedCondition);
+                new JSONTask(this).setTaskListener(houseList ->  {
                     houseAdapter.addHouseItems(houseList);
-                }).execute("http://10.80.161.54:80/api/juntrade?시도명=" + local + "");
+                }).execute("http://10.80.161.54:80/api/realtrade?시도명=" + local + "&검색조건=" + selectedCondition);
             }
         }
     }
@@ -77,10 +81,10 @@ public class ListActivity extends BaseActivity {
         conditionSpinner.setVisibility(View.VISIBLE);
 
         ArrayAdapter localAdapter = ArrayAdapter.createFromResource(this, R.array.location, android.R.layout.simple_spinner_item);
-        ArrayAdapter contionAdapter = ArrayAdapter.createFromResource(this, R.array.condition, android.R.layout.simple_spinner_item);
+        ArrayAdapter conditionAdapter = ArrayAdapter.createFromResource(this, R.array.condition, android.R.layout.simple_spinner_item);
 
         localSpinner.setAdapter(localAdapter);
-        conditionSpinner.setAdapter(contionAdapter);
+        conditionSpinner.setAdapter(conditionAdapter);
 
         localSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -99,6 +103,7 @@ public class ListActivity extends BaseActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedCondition = (String) parent.getItemAtPosition(position);
+                getHouseData(selectedLocal, selectedCondition);
             }
 
             @Override
@@ -106,6 +111,14 @@ public class ListActivity extends BaseActivity {
                 selectedCondition = null;
             }
         });
+    }
+
+    public void onCheckboxClicked(View view) {
+        CheckBox Month = (CheckBox) findViewById(R.id.Month);
+        CheckBox Year = (CheckBox) findViewById(R.id.Year);
+        CheckBox Trade = (CheckBox) findViewById(R.id.Trade);
+
+        new HouseAdapter(Month.isChecked(), Year.isChecked(), Trade.isChecked());
     }
     /*@Override
     protected void onCreate(Bundle savedInstanceState) {
