@@ -20,7 +20,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".5"
+            android:layout_weight=".7"
             android:background="@color/colorPrimary"
             android:gravity="center"
             android:orientation="horizontal"
@@ -32,9 +32,9 @@
                 android:layout_width="160dp"
                 android:layout_height="130dp"
                 android:layout_marginEnd="8dp"
+                android:drawablePadding="5dp"
                 android:drawableTop="@drawable/ic_placeholder"
                 android:paddingTop="15dp"
-                android:drawablePadding="5dp"
                 android:text="@string/find_with_map"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimary"
@@ -51,15 +51,22 @@
                 android:text="@string/view_all"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimary"
-                android:textSize="15sp"/>
+                android:textSize="15sp" />
         </LinearLayout>
-        
+
+        <ImageView
+            android:layout_width="395dp"
+            android:layout_height="182dp"
+            android:layout_weight=".3"
+            android:scaleType="fitXY"
+            android:src="@drawable/newslist" />
+
         <com.google.android.gms.ads.AdView
             android:id="@+id/adView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:adSize="BANNER"
-            app:adUnitId="ca-app-pub-3940256099942544/6300978111"/>
+            app:adUnitId="ca-app-pub-3940256099942544/6300978111" />
     </LinearLayout>
 
     <include
