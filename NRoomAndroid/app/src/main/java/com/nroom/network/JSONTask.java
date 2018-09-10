@@ -101,7 +101,7 @@ public class JSONTask extends AsyncTask<String, String, ArrayList<HouseItem>> {
                                 object.getInt("대피소수")));
                     }
                 }
-                Log.v("12312", houseList.get(0).get대피소수() + "");
+                Log.v("123123", houseList.get(0).get대피소수() + "");
                 return houseList;
             } catch (IOException | JSONException e) {
                 e.printStackTrace();
