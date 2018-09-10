@@ -2,6 +2,7 @@ package com.nroom.recyclerview;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -17,9 +18,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class HouseAdapter extends RecyclerView.Adapter<HouseViewHolder> {
 
-    private final Context context;
+    private Context context;
     private ArrayList<HouseItem> houseItems;
 
+    private boolean monthCheck = true;
+    private boolean yearCheck = true;
+    private boolean tradeCheck = true;
+
+    public HouseAdapter(boolean monthCheck, boolean yearCheck, boolean tradeCheck){
+        this.monthCheck = monthCheck;
+        this.yearCheck = yearCheck;
+        this.tradeCheck = tradeCheck;
+        setCheck();
+    }
     public HouseAdapter(Context context) {
         this(context, new ArrayList<>());
     }
@@ -38,16 +49,18 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull HouseViewHolder holder, int position) {
         HouseItem houseItem = houseItems.get(position);
+        Log.v("12312", monthCheck + ",");
+
 
         holder.image.setImageDrawable(houseItem.getImage());
         if(houseItem.get보증금() > 0){
-            if(houseItem.get월세금액() > 0){
-                holder.price.setText("월세   " + houseItem.get월세금액() + "/" + houseItem.get보증금());
+            if(houseItem.get월세금액() > 0 && monthCheck){
+                holder.price.setText("월세   " + houseItem.get보증금() + "/" + houseItem.get월세금액());
             }else{
                 holder.price.setText("전세   " +houseItem.get보증금());
             }
         }
-        else{
+        else if(tradeCheck){
             holder.price.setText("매매   " + houseItem.get거래금액());
         }
         holder.location.setText(houseItem.get시군구명() + " " + houseItem.get법정동() + " " + houseItem.get건물명() + ", " + houseItem.get층() + "층");
@@ -78,6 +91,10 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseViewHolder> {
 
     public void addHouseItems(ArrayList<HouseItem> houseItems) {
         this.houseItems.addAll(houseItems);
+        notifyDataSetChanged();
+    }
+
+    public void setCheck(){
         notifyDataSetChanged();
     }
 }

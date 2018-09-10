@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 
 import com.nroom.R;
@@ -110,6 +111,14 @@ public class ListActivity extends BaseActivity {
                 selectedCondition = null;
             }
         });
+    }
+
+    public void onCheckboxClicked(View view) {
+        CheckBox Month = (CheckBox) findViewById(R.id.Month);
+        CheckBox Year = (CheckBox) findViewById(R.id.Year);
+        CheckBox Trade = (CheckBox) findViewById(R.id.Trade);
+
+        new HouseAdapter(Month.isChecked(), Year.isChecked(), Trade.isChecked());
     }
     /*@Override
     protected void onCreate(Bundle savedInstanceState) {
