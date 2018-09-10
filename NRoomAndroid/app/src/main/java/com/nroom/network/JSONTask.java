@@ -57,8 +57,6 @@ public class JSONTask extends AsyncTask<String, String, ArrayList<HouseItem>> {
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject object = jsonArray.getJSONObject(i);
                     if (object.has("월세금액")) {
-                        Log.v("12312",object.getInt("월세금액") + ", " + object.getString("월세금액"));
-                        Log.v("12312",object.getInt("보증금액") + ", " + object.getString("보증금액"));
                         houseList.add(new HouseItem(
                                 contextWeakReference.get().getDrawable(R.drawable.ic_house),
                                 object.getString("시군구코드"),
