@@ -50,7 +50,7 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseViewHolder> {
         else{
             holder.price.setText("매매   " + houseItem.get거래금액());
         }
-        holder.location.setText(houseItem.get시군구명() + " " + houseItem.get법정동() + " " + houseItem.get건물명() + ", " + houseItem.get층());
+        holder.location.setText(houseItem.get시군구명() + " " + houseItem.get법정동() + " " + houseItem.get건물명() + ", " + houseItem.get층() + "층");
 
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(context, DetailActivity.class);
