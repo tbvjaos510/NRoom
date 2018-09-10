@@ -10,4 +10,5 @@
     <string name="naver">NAVER</string>
     <string name="action_settings">설정</string>
     <string name="current_not_support">지원하지 않음</string>
+    <string name="image">이미지</string>
 </resources>

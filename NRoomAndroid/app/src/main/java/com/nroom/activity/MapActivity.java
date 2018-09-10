@@ -1,15 +1,21 @@
 package com.nroom.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.nhn.android.maps.NMapCompassManager;
 import com.nhn.android.maps.NMapContext;
 import com.nhn.android.maps.NMapController;
+import com.nhn.android.maps.NMapLocationManager;
 import com.nhn.android.maps.NMapView;
 import com.nhn.android.maps.maplib.NGeoPoint;
 import com.nhn.android.maps.nmapmodel.NMapError;
 import com.nhn.android.maps.overlay.NMapPOIdata;
+import com.nhn.android.mapviewer.overlay.NMapMyLocationOverlay;
 import com.nhn.android.mapviewer.overlay.NMapOverlayManager;
 import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay;
 import com.nhn.android.mapviewer.overlay.NMapResourceProvider;
@@ -29,6 +35,9 @@ public class MapActivity extends BaseActivity
     private FloatingActionButton zoomOutFAB;
     private NMapResourceProvider nMapViewerResourceProvider;
     private NMapOverlayManager nOverlayManager;
+    private NMapLocationManager nMapLocationManager;
+    private NMapCompassManager nMapCompassManager;
+    private NMapMyLocationOverlay nMapMyLocationOverlay;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -68,8 +77,104 @@ public class MapActivity extends BaseActivity
         // create overlay manager
         nOverlayManager = new NMapOverlayManager(this, nMapView, nMapViewerResourceProvider);
 
+        // location manager
+        nMapLocationManager = new NMapLocationManager(this);
+        nMapLocationManager.setOnLocationChangeListener(onMyLocationChangeListener);
+
+        // compass manager
+        nMapCompassManager = new NMapCompassManager(this);
+
+        // create my location overlay
+        nMapMyLocationOverlay = nOverlayManager.createMyLocationOverlay(nMapLocationManager, nMapCompassManager);
+
+        //TODO
         addMarker();
+
+        startMyLocation();
     }
+
+    private void startMyLocation() {
+
+        if (nMapMyLocationOverlay != null) {
+            if (!nOverlayManager.hasOverlay(nMapMyLocationOverlay)) {
+                nOverlayManager.addOverlay(nMapMyLocationOverlay);
+            }
+
+            if (nMapLocationManager.isMyLocationEnabled()) {
+
+                if (!nMapView.isAutoRotateEnabled()) {
+                    nMapMyLocationOverlay.setCompassHeadingVisible(true);
+
+                    nMapCompassManager.enableCompass();
+
+                    nMapView.setAutoRotateEnabled(true, false);
+                } else {
+                    stopMyLocation();
+                }
+
+                nMapView.postInvalidate();
+            } else {
+                boolean isMyLocationEnabled = nMapLocationManager.enableMyLocation(true);
+                if (!isMyLocationEnabled) {
+                    Toast.makeText(this, "Please enable a My Location source in system settings",
+                            Toast.LENGTH_LONG).show();
+
+                    Intent goToSettings = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    startActivity(goToSettings);
+                }
+            }
+        }
+    }
+
+    private void stopMyLocation() {
+        if (nMapMyLocationOverlay != null) {
+            nMapLocationManager.disableMyLocation();
+
+            if (nMapView.isAutoRotateEnabled()) {
+                nMapMyLocationOverlay.setCompassHeadingVisible(false);
+
+                nMapCompassManager.disableCompass();
+
+                nMapView.setAutoRotateEnabled(false, false);
+            }
+        }
+    }
+
+    private final NMapLocationManager.OnLocationChangeListener onMyLocationChangeListener = new NMapLocationManager.OnLocationChangeListener() {
+
+        @Override
+        public boolean onLocationChanged(NMapLocationManager locationManager, NGeoPoint myLocation) {
+
+            if (nMapController != null) {
+                nMapController.animateTo(myLocation);
+            }
+
+            return true;
+        }
+
+        @Override
+        public void onLocationUpdateTimeout(NMapLocationManager locationManager) {
+
+            // stop location updating
+            //			Runnable runnable = new Runnable() {
+            //				public void run() {
+            //					stopMyLocation();
+            //				}
+            //			};
+            //			runnable.run();
+
+            Toast.makeText(getApplicationContext(), "Your current location is temporarily unavailable.", Toast.LENGTH_LONG).show();
+        }
+
+        @Override
+        public void onLocationUnavailableArea(NMapLocationManager locationManager, NGeoPoint myLocation) {
+
+            Toast.makeText(getApplicationContext(), "Your current location is unavailable area.", Toast.LENGTH_LONG).show();
+
+            stopMyLocation();
+        }
+
+    };
 
     private void updateZoomFAB() {
         if (nMapController.canZoomIn())
@@ -94,19 +199,19 @@ public class MapActivity extends BaseActivity
 
         // create POI data overlay
         NMapPOIdataOverlay poiDataOverlay = nOverlayManager.createPOIdataOverlay(poiData, null);
-        poiDataOverlay.selectPOIitem(0, true);
+        //poiDataOverlay.selectPOIitem(0, true);
     }
 
     /**
      * 지도가 초기화된 후 호출된다.
      * 정상적으로 초기화되면 errorInfo 객체는 null이 전달되며,
-     * 초기화 실패 시 errorInfo객체에 에러 원인이 전달된다
+     * 초기화 실패 시 errorInfo 객체에 에러 원인이 전달된다
      */
     @Override
     public void onMapInitHandler(NMapView mapView, NMapError errorInfo) {
         if (errorInfo == null) { // success
             nMapController.setMapCenter(
-                    new NGeoPoint(126.978371, 37.5666091), 11);
+                    new NGeoPoint(127.985835, 35.994213), 3);
         } else { // fail
             Log.e("NMAP", "onMapInitHandler: " + errorInfo.toString());
         }
