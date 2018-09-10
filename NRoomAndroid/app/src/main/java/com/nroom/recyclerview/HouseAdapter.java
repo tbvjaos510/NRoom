@@ -65,9 +65,12 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseViewHolder> {
             intent.putExtra("price", holder.price.getText());
             intent.putExtra("sale_id", houseItem.getId());
             intent.putExtra("area", houseItem.get전용면적());
-            intent.putExtra("admin_exp", "UNKNOWN");
+            intent.putExtra("admin_exp", "5만");
             intent.putExtra("structure", houseItem.get집종류());
             intent.putExtra("detail_summary", "☆★회사 다니시는 분들 주목★☆\n이 위치, 이 금액 실화냐?!\n\n■널찍한 공간, 수납공간도 다수입니다!\n\n■빌트인 냉장고부터 건조기까지 완전 풀옵션~★\n\n■최고급 소재 사용으로 환경 호르몬 걱정은 안녕~~\n\n■관리비 걱정 없이 생활을 만끽하세요~");
+            intent.putExtra("lat", houseItem.get위도());
+            intent.putExtra("lng", houseItem.get경도());
+
 
             context.startActivity(intent);
         });

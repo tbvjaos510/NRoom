@@ -2,9 +2,8 @@ package com.nroom.network;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 
-import com.nroom.data.TraficItem;
+import com.nroom.data.TrafficItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,11 +15,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class JSONTaskTraffic extends AsyncTask<String, String, ArrayList<TraficItem>> {
+public class JSONTaskTraffic extends AsyncTask<String, String, ArrayList<TrafficItem>> {
     private TaskListener taskListener;
 
     private WeakReference<Context> contextWeakReference;
@@ -28,8 +26,9 @@ public class JSONTaskTraffic extends AsyncTask<String, String, ArrayList<TraficI
     public JSONTaskTraffic(Context context) {
         this.contextWeakReference = new WeakReference<>(context);
     }
+
     @Override
-    protected ArrayList<TraficItem> doInBackground(String... urls) {
+    protected ArrayList<TrafficItem> doInBackground(String... urls) {
 
         HttpURLConnection con = null;
         BufferedReader reader = null;
@@ -48,26 +47,22 @@ public class JSONTaskTraffic extends AsyncTask<String, String, ArrayList<TraficI
             while ((line = reader.readLine()) != null) {
                 builder.append(line);
             }
-            ArrayList<TraficItem> traficList = new ArrayList<>();
+            ArrayList<TrafficItem> traficList = new ArrayList<>();
             JSONObject jsonObject = new JSONObject(builder.toString());
             JSONArray jsonArray = jsonObject.getJSONArray("data");
 
-            for(int i = 0; i< jsonArray.length(); i++){
+            for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject object = jsonArray.getJSONObject(i);
-                traficList.add(new TraficItem(
-                        object.getDouble("gpslati"),
-                        object.getDouble("gpslong"),
-                        object.getString("nodenm")
+                traficList.add(new TrafficItem(
+                                object.getDouble("gpslati"),
+                                object.getDouble("gpslong"),
+                                object.getString("nodenm")
                         )
                 );
             }
             return traficList;
 
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
+        } catch (JSONException | IOException e) {
             e.printStackTrace();
         } finally {
             if (con != null) {
@@ -84,8 +79,9 @@ public class JSONTaskTraffic extends AsyncTask<String, String, ArrayList<TraficI
         return new ArrayList<>();
 
     }
+
     @Override
-    protected void onPostExecute(ArrayList<TraficItem> result) {
+    protected void onPostExecute(ArrayList<TrafficItem> result) {
         if (taskListener != null)
             taskListener.onTaskFinished(result);
     }
@@ -96,6 +92,6 @@ public class JSONTaskTraffic extends AsyncTask<String, String, ArrayList<TraficI
     }
 
     public interface TaskListener {
-        void onTaskFinished(ArrayList<TraficItem> houseList);
+        void onTaskFinished(ArrayList<TrafficItem> trafficItems);
     }
 }
