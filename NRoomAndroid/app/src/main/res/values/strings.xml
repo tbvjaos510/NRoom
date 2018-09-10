@@ -9,4 +9,5 @@
     <string name="label_sale_id">등록번호 :</string>
     <string name="naver">NAVER</string>
     <string name="action_settings">설정</string>
+    <string name="current_not_support">지원하지 않음</string>
 </resources>
