@@ -67,11 +67,16 @@ public class DetailActivity extends BaseActivity {
         }else{
             structureData = "연립다세대";
         }
+        String setAdminExp = intent.getStringExtra("admin_exp");
+        if(!setAdminExp.equals("0")){
+            setAdminExp = "없음";
+        }
+
         summary.setText(intent.getStringExtra("summary"));
         price.setText(intent.getStringExtra("price"));
         saleID.setText(intent.getStringExtra("sale_id"));
         area.setText(intent.getStringExtra("area"));
-        adminExp.setText(intent.getStringExtra("admin_exp"));
+        adminExp.setText(setAdminExp);
         structure.setText(structureData);
         detailSummary.setText(intent.getStringExtra("detail_summary"));
 

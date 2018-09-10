@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import com.nroom.R;
 import com.nroom.data.HouseItem;
 import com.nroom.network.JSONTask;
+import com.nroom.network.JSONTaskTraffic;
 import com.nroom.recyclerview.HouseAdapter;
 
 import java.util.ArrayList;
@@ -31,6 +32,8 @@ public class ListActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
+       // new JSONTaskTraffic(null).execute("http://10.80.161.54/api/busPos?lat=37.505217&lng=127.025389");
 
         setSupportActionBar(findViewById(R.id.toolbar));
 
