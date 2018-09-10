@@ -62,10 +62,11 @@ function Parse() {
 }
 var jusodata
 function updateJuso2(i) {
-    juso(jusodata[i].법정동, jusodata[i].지번, jusodata[i].건물명, (data) => {
-        if (data && data.rnMgtSn)
-            conn.query(`update hometrade set 도로명코드 = ${data.rnMgtSn} where id = ${jusodata[i].id}`, (err, result) => {
-                //       console.log('end ' + i)
+    juso(jusodata[i].시도명 + ' ' + jusodata[i].시군구명 + ' ' + jusodata[i].법정동, jusodata[i].지번, jusodata[i].건물명, (data) => {
+        if (data && data.point)
+            conn.query(`update hometrade2 set lat = ${data.point.x}, lng = ${data.point.y} where id = ${jusodata[i].id}`, (err, result) => {
+
+                console.log('end ' + i)
             })
         else {
             console.log(jusodata[i].법정동, jusodata[i].지번, jusodata[i].건물명, i, 'not found')
@@ -75,7 +76,7 @@ function updateJuso2(i) {
 }
 var v = 0;
 function updateJuso() {
-    conn.query('select * from hometrade', (err, results) => {
+    conn.query('select * from hometrade2 join lcode on lcode.시군구코드 = hometrade2.지역번호  where lat is null', (err, results) => {
         if (err) throw err
         jusodata = results
 
@@ -85,7 +86,7 @@ function updateJuso() {
                 return clearInterval(interval)
             updateJuso2(v)
             v++
-        }, 10)
+        }, 50)
 
     })
 }
@@ -112,6 +113,7 @@ function Envir() {
             clearInterval(interval)
     }, 100)
 }
+updateJuso()
 //updateEnvir(16)
 //api(url.Air.getCtprvnList(locale[16], "HOUR", 100), data => console.log(data.items.item))
 //updateJuso()
