@@ -33,7 +33,7 @@ public class ListActivity extends BaseActivity {
 
         setSupportActionBar(findViewById(R.id.toolbar));
 
-        Button btnLocal = findViewById(R.id.btnLocal);
+    //    Button btnLocal = findViewById(R.id.btnLocal);
         InitSpinner();
 
         recyclerView = findViewById(R.id.sale_recycler_view);

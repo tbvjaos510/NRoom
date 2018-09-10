@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
+   <!--         <Button
                 android:id="@+id/btnLocal"
                 android:layout_width="wrap_content"
                 android:layout_height="24pt"
@@ -33,7 +33,26 @@
                 android:text="조건으로 검색"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="15sp" />
+                android:textSize="15sp" /> -->
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="24pt"
+                android:text="월세"
+                android:checked="true"
+                android:buttonTint="#000"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="24pt"
+                android:text="전세"
+                android:checked="true"
+                android:buttonTint="#000"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="24pt"
+                android:text="매매"
+                android:checked="true"
+                android:buttonTint="#000"/>
 
             <Spinner
                 android:id="@+id/localSpinner"
