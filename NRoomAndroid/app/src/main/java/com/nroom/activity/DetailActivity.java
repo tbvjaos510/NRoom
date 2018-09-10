@@ -50,12 +50,18 @@ public class DetailActivity extends BaseActivity {
 
     private void bindViews() {
         Intent intent = getIntent();
+        String structureData =  intent.getStringExtra("structure");
+        if(structureData.equals("1")){
+            structureData = "아파트";
+        }else{
+            structureData = "연립다세대";
+        }
         summary.setText(intent.getStringExtra("summary"));
         price.setText(intent.getStringExtra("price"));
         saleID.setText(intent.getStringExtra("sale_id"));
         area.setText(intent.getStringExtra("area"));
         adminExp.setText(intent.getStringExtra("admin_exp"));
-        structure.setText(intent.getStringExtra("structure"));
+        structure.setText(structureData);
         detailSummary.setText(intent.getStringExtra("detail_summary"));
 
         LineData data = makeDummy(12, 100);
