@@ -53,6 +53,11 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="15sp"/>
         </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/newslist"/>
         
         <com.google.android.gms.ads.AdView
             android:id="@+id/adView"
