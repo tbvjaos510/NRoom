@@ -192,10 +192,10 @@ public class MapActivity extends BaseActivity
 
     private void addMarker() {
         int markerId = NMapPOIFlagType.PIN;
-
         // set POI data
         NMapPOIdata poiData = new NMapPOIdata(2, nMapViewerResourceProvider);
         new JSONTaskAll(this).setTaskListener(houseList -> {
+            Log.d("data", houseList.size() + "");
             poiData.beginPOIdata(houseList.size());
             for (HouseItem item : houseList){
                 poiData.addPOIitem(item.get위도(), item.get경도(), item.get건물명(), markerId, 0);

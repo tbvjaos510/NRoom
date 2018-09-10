@@ -2,6 +2,7 @@ package com.nroom.network;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.nroom.R;
 import com.nroom.data.HouseItem;
@@ -48,7 +49,7 @@ public class JSONTaskAll extends AsyncTask<String, String, ArrayList<HouseItem>>
                 while ((line = reader.readLine()) != null) {
                     builder.append(line);
                 }
-
+                Log.v("123123",builder.toString());
                 ArrayList<HouseItem> houseList = new ArrayList<>();
                 JSONObject jsonObject = new JSONObject(builder.toString());
                 JSONArray jsonArrayJun = jsonObject.getJSONArray("jun");
@@ -100,7 +101,6 @@ public class JSONTaskAll extends AsyncTask<String, String, ArrayList<HouseItem>>
                             object.getDouble("lng"),
                             object.getInt("대피소수")));
                 }
-
                 return houseList;
             } catch (IOException | JSONException e) {
                 e.printStackTrace();
