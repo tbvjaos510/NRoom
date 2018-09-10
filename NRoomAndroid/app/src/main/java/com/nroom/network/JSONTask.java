@@ -74,7 +74,9 @@ public class JSONTask extends AsyncTask<String, String, ArrayList<HouseItem>> {
                                 object.getString("지번"),
                                 object.getString("도로명코드"),
                                 object.getInt("월세금액"),
-                                object.getInt("보증금액")));
+                                object.getInt("보증금액"),
+                                object.getDouble("lat"),
+                                object.getDouble("lng")));
                     } else {
                         houseList.add(new HouseItem(
                                 contextWeakReference.get().getDrawable(R.drawable.ic_house),
@@ -92,7 +94,9 @@ public class JSONTask extends AsyncTask<String, String, ArrayList<HouseItem>> {
                                 object.getString("일"),
                                 object.getString("지번"),
                                 object.getString("거래금액"),
-                                object.getString("도로명코드")));
+                                object.getString("도로명코드"),
+                                object.getDouble("lat"),
+                                object.getDouble("lng")));
                     }
                 }
 

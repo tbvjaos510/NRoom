@@ -36,23 +36,29 @@
                 android:textSize="15sp" /> -->
 
             <CheckBox
+                android:id="@+id/Month"
                 android:layout_width="wrap_content"
                 android:layout_height="24pt"
                 android:text="월세"
                 android:checked="true"
-                android:buttonTint="#000"/>
+                android:buttonTint="#000"
+                android:onClick="onCheckboxClicked"/>
             <CheckBox
+                android:id="@+id/Year"
                 android:layout_width="wrap_content"
                 android:layout_height="24pt"
                 android:text="전세"
                 android:checked="true"
-                android:buttonTint="#000"/>
+                android:buttonTint="#000"
+                android:onClick="onCheckboxClicked"/>
             <CheckBox
+                android:id="@+id/Trade"
                 android:layout_width="wrap_content"
                 android:layout_height="24pt"
                 android:text="매매"
                 android:checked="true"
-                android:buttonTint="#000"/>
+                android:buttonTint="#000"
+                android:onClick="onCheckboxClicked"/>
 
             <Spinner
                 android:id="@+id/localSpinner"
