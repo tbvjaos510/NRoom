@@ -12,6 +12,7 @@ import com.nroom.data.HouseItem;
 import com.nroom.data.StaticResources;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -55,21 +56,21 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseViewHolder> {
         holder.image.setImageDrawable(houseItem.getImage());
         if(houseItem.get보증금() > 0){
             if(houseItem.get월세금액() > 0 && monthCheck){
-                holder.price.setText("월세   " + houseItem.get보증금() + "/" + houseItem.get월세금액());
+                holder.price.setText(String.format(Locale.KOREA, context.getString(R.string.format_month), houseItem.get보증금(), houseItem.get월세금액()));
             }else{
-                holder.price.setText("전세   " +houseItem.get보증금());
+                holder.price.setText(String.format(Locale.KOREA, context.getString(R.string.format_year), houseItem.get보증금()));
             }
         }
         else if(tradeCheck){
-            holder.price.setText("매매   " + houseItem.get거래금액());
+            holder.price.setText(String.format(Locale.KOREA, context.getString(R.string.format_trade),houseItem.get거래금액()));
         }
-        holder.location.setText(houseItem.get시군구명() + " " + houseItem.get법정동() + " " + houseItem.get건물명() + ", " + houseItem.get층() + "층");
+        holder.location.setText(String.format(Locale.KOREA, context.getString(R.string.format_address), houseItem.get시군구명(), houseItem.get법정동(), houseItem.get건물명(), houseItem.get층()));
 
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(context, DetailActivity.class);
             intent.putExtra("images", getImages((position + 1) % 5));
             intent.putExtra("summary", "요약");
-            intent.putExtra("price", houseItem.get거래금액());
+            intent.putExtra("price", holder.price.getText());
             intent.putExtra("sale_id", houseItem.getId());
             intent.putExtra("area", houseItem.get전용면적());
             intent.putExtra("admin_exp", "UNKNOWN");
