@@ -58,7 +58,7 @@ public class HouseItem {
         return 보증금;
     }
 
-    public HouseItem(Drawable image, String 시군구코드, String 시도명, String 시군구명, String id, String 지역번호, String 법정동, String 집종류, String 건물명, String 전용면적, String 층, String 건축년도, String 일, String 지번, String 거래금액, String 도로명코드, int 월세금액, int  보증금) {
+    public HouseItem(Drawable image, String 시군구코드, String 시도명, String 시군구명, String id, String 지역번호, String 법정동, String 집종류, String 건물명, String 전용면적, String 층, String 건축년도, String 일, String 지번, String 도로명코드, int 월세금액, int  보증금) {
         this.image = image;
         this.시군구코드 = 시군구코드;
         this.시도명 = 시도명;
@@ -73,7 +73,6 @@ public class HouseItem {
         this.건축년도 = 건축년도;
         this.일 = 일;
         this.지번 = 지번;
-        this.거래금액 = 거래금액;
         this.도로명코드 = 도로명코드;
         this.월세금액 = 월세금액;
         this.보증금 = 보증금;

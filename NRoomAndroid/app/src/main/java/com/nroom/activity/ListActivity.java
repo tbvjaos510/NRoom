@@ -56,16 +56,13 @@ public class ListActivity extends BaseActivity {
             if (condition == null) {
                 new JSONTask(this).setTaskListener(houseList ->  {
                     houseAdapter.setHouseItems(houseList);
-                    houseAdapter.notifyDataSetChanged();
+                }).execute("http://10.80.161.54:80/api/juntrade?시도명=" + local);
+                new JSONTask(this).setTaskListener(houseList ->  {
+                    houseAdapter.addHouseItems(houseList);
                 }).execute("http://10.80.161.54:80/api/realtrade?시도명=" + local);
-               /* new JSONTask(this).setTaskListener(houseList ->  {
-                    houseAdapter.setHouseItems(houseList);
-                    houseAdapter.notifyDataSetChanged();
-                }).execute("http://10.80.161.54:80/api/juntrade?시도명=" + local); */
             } else {
                 new JSONTask(this).setTaskListener(houseList ->  {
-                    houseAdapter.setHouseItems(houseList);
-                    houseAdapter.notifyDataSetChanged();
+                    houseAdapter.addHouseItems(houseList);
                 }).execute("http://10.80.161.54:80/api/juntrade?시도명=" + local + "");
             }
         }

@@ -40,9 +40,17 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseViewHolder> {
         HouseItem houseItem = houseItems.get(position);
 
         holder.image.setImageDrawable(houseItem.getImage());
-        holder.price.setText(houseItem.get거래금액());
-        holder.location.setText(houseItem.get경도() + "");
-        holder.notice.setText(houseItem.get법정동());
+        if(houseItem.get보증금() > 0){
+            if(houseItem.get월세금액() > 0){
+                holder.price.setText("월세   " + houseItem.get월세금액() + "/" + houseItem.get보증금());
+            }else{
+                holder.price.setText("전세   " +houseItem.get보증금());
+            }
+        }
+        else{
+            holder.price.setText("매매   " + houseItem.get거래금액());
+        }
+        holder.location.setText(houseItem.get시군구명() + " " + houseItem.get법정동() + " " + houseItem.get건물명() + ", " + houseItem.get층());
 
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(context, DetailActivity.class);
@@ -65,6 +73,11 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseViewHolder> {
 
     public void setHouseItems(ArrayList<HouseItem> houseItems) {
         this.houseItems = houseItems;
+        notifyDataSetChanged();
+    }
+
+    public void addHouseItems(ArrayList<HouseItem> houseItems) {
+        this.houseItems.addAll(houseItems);
         notifyDataSetChanged();
     }
 }
