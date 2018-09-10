@@ -74,7 +74,8 @@ public class JSONTaskAll extends AsyncTask<String, String, ArrayList<HouseItem>>
                             object.getInt("월세금액"),
                             object.getInt("보증금액"),
                             object.getDouble("lat"),
-                            object.getDouble("lng")));
+                            object.getDouble("lng"),
+                            object.getInt("대피소수")));
                 }
                 for (int i = 0; i < jsonArrayReal.length(); i++) {
                     JSONObject object = jsonArrayReal.getJSONObject(i);
@@ -96,7 +97,8 @@ public class JSONTaskAll extends AsyncTask<String, String, ArrayList<HouseItem>>
                             object.getString("거래금액"),
                             object.getString("도로명코드"),
                             object.getDouble("lat"),
-                            object.getDouble("lng")));
+                            object.getDouble("lng"),
+                            object.getInt("대피소수")));
                 }
 
                 return houseList;
