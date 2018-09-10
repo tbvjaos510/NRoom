@@ -35,6 +35,7 @@ public class JSONTask extends AsyncTask<String, String, ArrayList<HouseItem>> {
             HttpURLConnection con = null;
             BufferedReader reader = null;
             try {
+                Log.v("123123", urls[0]);
                 URL url = new URL(urls[0]);
                 con = (HttpURLConnection) url.openConnection();
                 con.setRequestMethod("GET");
