@@ -48,7 +48,6 @@ public class JSONTaskTraffic extends AsyncTask<String, String, ArrayList<TraficI
             while ((line = reader.readLine()) != null) {
                 builder.append(line);
             }
-            Log.v("12312",builder.toString());
             ArrayList<TraficItem> traficList = new ArrayList<>();
             JSONObject jsonObject = new JSONObject(builder.toString());
             JSONArray jsonArray = jsonObject.getJSONArray("data");
