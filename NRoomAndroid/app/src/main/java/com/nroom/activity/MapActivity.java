@@ -20,6 +20,9 @@ import com.nhn.android.mapviewer.overlay.NMapOverlayManager;
 import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay;
 import com.nhn.android.mapviewer.overlay.NMapResourceProvider;
 import com.nroom.R;
+import com.nroom.data.HouseItem;
+import com.nroom.network.JSONTask;
+import com.nroom.network.JSONTaskAll;
 import com.nroom.nmap.NMapPOIFlagType;
 import com.nroom.nmap.NMapViewerResourceProvider;
 
@@ -189,18 +192,25 @@ public class MapActivity extends BaseActivity
 
     private void addMarker() {
         int markerId = NMapPOIFlagType.PIN;
-
         // set POI data
         NMapPOIdata poiData = new NMapPOIdata(2, nMapViewerResourceProvider);
-        poiData.beginPOIdata(2);
-        poiData.addPOIitem(127.0630205, 37.5091300, "Pizza 777-111", markerId, 0);
-        poiData.addPOIitem(127.061, 37.51, "Pizza 123-456", markerId, 0);
-        poiData.endPOIdata();
+        new JSONTaskAll(this).setTaskListener(houseList -> {
+            Log.d("data", houseList.size() + "");
+            poiData.beginPOIdata(houseList.size());
+            for (HouseItem item : houseList){
+                poiData.addPOIitem(item.get위도(), item.get경도(), item.get건물명(), markerId, 0);
+            }
+            poiData.endPOIdata();
+            // create POI data overlay
+            NMapPOIdataOverlay poiDataOverlay = nOverlayManager.createPOIdataOverlay(poiData, null);
+        }).execute("http://10.80.161.54:80/api/Alltrade");
+//        poiData.beginPOIdata(2);
+//        poiData.addPOIitem(127.0630205, 37.5091300, "Pizza 777-111", markerId, 0);
+//        poiData.addPOIitem(127.061, 37.51, "Pizza 123-456", markerId, 0);
 
-        // create POI data overlay
-        NMapPOIdataOverlay poiDataOverlay = nOverlayManager.createPOIdataOverlay(poiData, null);
         //poiDataOverlay.selectPOIitem(0, true);
     }
+
 
     /**
      * 지도가 초기화된 후 호출된다.
