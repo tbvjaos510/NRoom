@@ -66,12 +66,12 @@ public class InfoPagerAdapter extends PagerAdapter {
                     }
                 }).execute("http://10.80.161.54:80/api/busPos?lng=" + lng + "&lat=" + lat);
 
-                container.addView(constraintLayout);
+                //container.addView(constraintLayout);
 
-                return constraintLayout;
+                //return constraintLayout;
         }
 
-        return null;
+        return container;
     }
 
     @Override
@@ -81,7 +81,7 @@ public class InfoPagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Override

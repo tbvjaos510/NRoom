@@ -22,11 +22,14 @@ public class InfoFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        switch (position) {
+
+        }
         return null;
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return 3;
     }
 }
