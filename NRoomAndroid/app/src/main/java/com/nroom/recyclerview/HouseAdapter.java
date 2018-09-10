@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 
 import com.nroom.R;
 import com.nroom.activity.DetailActivity;
-import com.nroom.activity.ListActivity;
 import com.nroom.data.HouseItem;
+import com.nroom.data.StaticResources;
 
 import java.util.ArrayList;
 
@@ -67,6 +67,7 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseViewHolder> {
 
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(context, DetailActivity.class);
+            intent.putExtra("images", getImages((position + 1) % 5));
             intent.putExtra("summary", "요약");
             intent.putExtra("price", houseItem.get거래금액());
             intent.putExtra("sale_id", houseItem.getId());
@@ -77,6 +78,29 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseViewHolder> {
 
             context.startActivity(intent);
         });
+    }
+
+    private int[] getImages(int i) {
+        int[] images = new int[0];
+        switch (i) {
+            case 0:
+                images = StaticResources.aptImages;
+                break;
+            case 1:
+                images = StaticResources.oneImages1;
+                break;
+            case 2:
+                images = StaticResources.oneImages2;
+                break;
+            case 3:
+                images = StaticResources.oneImages3;
+                break;
+            case 4:
+                images = StaticResources.oneImages4;
+                break;
+        }
+
+        return images;
     }
 
     @Override

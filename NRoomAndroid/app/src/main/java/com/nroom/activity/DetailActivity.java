@@ -11,13 +11,19 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.nroom.R;
+import com.nroom.data.StaticResources;
+import com.nroom.viewpager.ImagePagerAdapter;
+import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
 import java.util.ArrayList;
 
 import androidx.annotation.ColorInt;
+import androidx.viewpager.widget.ViewPager;
 
 public class DetailActivity extends BaseActivity {
 
+    private ViewPager viewPager;
+    private WormDotsIndicator wormDotsIndicator;
     private TextView summary;
     private TextView price;
     private TextView saleID;
@@ -38,6 +44,8 @@ public class DetailActivity extends BaseActivity {
     }
 
     private void initViews() {
+        viewPager = findViewById(R.id.view_pager);
+        wormDotsIndicator = findViewById(R.id.worm_dot);
         summary = findViewById(R.id.summary);
         price = findViewById(R.id.price);
         saleID = findViewById(R.id.sale_id);
@@ -50,6 +58,9 @@ public class DetailActivity extends BaseActivity {
 
     private void bindViews() {
         Intent intent = getIntent();
+        viewPager.setAdapter(new ImagePagerAdapter(this, intent.getIntArrayExtra("images")));
+        wormDotsIndicator.setViewPager(viewPager);
+
         String structureData =  intent.getStringExtra("structure");
         if(structureData.equals("1")){
             structureData = "아파트";

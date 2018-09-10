@@ -81,10 +81,10 @@ public class ListActivity extends BaseActivity {
         conditionSpinner.setVisibility(View.VISIBLE);
 
         ArrayAdapter localAdapter = ArrayAdapter.createFromResource(this, R.array.location, android.R.layout.simple_spinner_item);
-        ArrayAdapter contionAdapter = ArrayAdapter.createFromResource(this, R.array.condition, android.R.layout.simple_spinner_item);
+        ArrayAdapter conditionAdapter = ArrayAdapter.createFromResource(this, R.array.condition, android.R.layout.simple_spinner_item);
 
         localSpinner.setAdapter(localAdapter);
-        conditionSpinner.setAdapter(contionAdapter);
+        conditionSpinner.setAdapter(conditionAdapter);
 
         localSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
