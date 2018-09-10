@@ -1,18 +1,35 @@
 package com.nroom.network;
 
+import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
+
+import com.nroom.data.TraficItem;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
-public class JSONTaskTraffic extends AsyncTask<String, String, String> {
+public class JSONTaskTraffic extends AsyncTask<String, String, ArrayList<TraficItem>> {
+    private TaskListener taskListener;
+
+    private WeakReference<Context> contextWeakReference;
+
+    public JSONTaskTraffic(Context context) {
+        this.contextWeakReference = new WeakReference<>(context);
+    }
     @Override
-    protected String doInBackground(String... urls) {
+    protected ArrayList<TraficItem> doInBackground(String... urls) {
 
         HttpURLConnection con = null;
         BufferedReader reader = null;
@@ -31,12 +48,27 @@ public class JSONTaskTraffic extends AsyncTask<String, String, String> {
             while ((line = reader.readLine()) != null) {
                 builder.append(line);
             }
+            Log.v("12312",builder.toString());
+            ArrayList<TraficItem> traficList = new ArrayList<>();
+            JSONObject jsonObject = new JSONObject(builder.toString());
+            JSONArray jsonArray = jsonObject.getJSONArray("data");
 
-            return builder.toString();//서버로 부터 받은 값을 리턴해줌 아마 OK!!가 들어올것임
+            for(int i = 0; i< jsonArray.length(); i++){
+                JSONObject object = jsonArray.getJSONObject(i);
+                traficList.add(new TraficItem(
+                        object.getDouble("gpslati"),
+                        object.getDouble("gpslong"),
+                        object.getString("nodenm")
+                        )
+                );
+            }
+            return traficList;
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
             e.printStackTrace();
         } finally {
             if (con != null) {
@@ -50,6 +82,21 @@ public class JSONTaskTraffic extends AsyncTask<String, String, String> {
                 e.printStackTrace();
             }
         }
-        return null;
+        return new ArrayList<>();
+
+    }
+    @Override
+    protected void onPostExecute(ArrayList<TraficItem> result) {
+        if (taskListener != null)
+            taskListener.onTaskFinished(result);
+    }
+
+    public JSONTaskTraffic setTaskListener(TaskListener taskListener) {
+        this.taskListener = taskListener;
+        return this;
+    }
+
+    public interface TaskListener {
+        void onTaskFinished(ArrayList<TraficItem> houseList);
     }
 }
