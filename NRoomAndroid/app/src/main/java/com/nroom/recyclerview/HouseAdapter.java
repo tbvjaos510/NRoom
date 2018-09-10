@@ -66,4 +66,9 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseViewHolder> {
         this.houseItems = houseItems;
         notifyDataSetChanged();
     }
+
+    public void addHouseItems(ArrayList<HouseItem> houseItems) {
+        this.houseItems.addAll(houseItems);
+        notifyDataSetChanged();
+    }
 }
