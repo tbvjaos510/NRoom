@@ -40,15 +40,5 @@
             tools:text="위치"
             android:textSize="25dp" />
 
-        <TextView
-            android:id="@+id/notice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:paddingBottom="3dip"
-            tools:text="설명"
-            android:textSize="20dp" />
-
     </LinearLayout>
 </LinearLayout>

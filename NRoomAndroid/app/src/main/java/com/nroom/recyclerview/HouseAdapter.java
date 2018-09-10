@@ -42,7 +42,6 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseViewHolder> {
         holder.image.setImageDrawable(houseItem.getImage());
         holder.price.setText(houseItem.get거래금액());
         holder.location.setText(houseItem.get경도() + "");
-        holder.notice.setText(houseItem.get법정동());
 
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(context, DetailActivity.class);
