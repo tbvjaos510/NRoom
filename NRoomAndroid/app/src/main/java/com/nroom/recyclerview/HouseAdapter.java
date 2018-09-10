@@ -2,7 +2,6 @@ package com.nroom.recyclerview;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -19,19 +18,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class HouseAdapter extends RecyclerView.Adapter<HouseViewHolder> {
 
-    private Context context;
+    private final Context context;
     private ArrayList<HouseItem> houseItems;
+    private final ArrayList<HouseItem> selectHouseItem = new ArrayList<>();
 
     private boolean monthCheck = true;
     private boolean yearCheck = true;
     private boolean tradeCheck = true;
 
-    public HouseAdapter(boolean monthCheck, boolean yearCheck, boolean tradeCheck){
-        this.monthCheck = monthCheck;
-        this.yearCheck = yearCheck;
-        this.tradeCheck = tradeCheck;
-        setCheck();
-    }
     public HouseAdapter(Context context) {
         this(context, new ArrayList<>());
     }
@@ -39,6 +33,7 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseViewHolder> {
     public HouseAdapter(Context context, ArrayList<HouseItem> houseItems) {
         this.context = context;
         this.houseItems = houseItems;
+        updateList();
     }
 
     @NonNull
@@ -49,20 +44,17 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull HouseViewHolder holder, int position) {
-        HouseItem houseItem = houseItems.get(position);
-        Log.v("12312", monthCheck + ",");
-
+        HouseItem houseItem = selectHouseItem.get(position);
 
         holder.image.setImageDrawable(houseItem.getImage());
-        if(houseItem.get보증금() > 0){
-            if(houseItem.get월세금액() > 0 && monthCheck){
+        if (houseItem.get보증금() > 0 || houseItem.get월세금액() > 0) {
+            if (houseItem.get월세금액() > 0) {
                 holder.price.setText(String.format(Locale.KOREA, context.getString(R.string.format_month), houseItem.get보증금(), houseItem.get월세금액()));
-            }else{
+            } else {
                 holder.price.setText(String.format(Locale.KOREA, context.getString(R.string.format_year), houseItem.get보증금()));
             }
-        }
-        else if(tradeCheck){
-            holder.price.setText(String.format(Locale.KOREA, context.getString(R.string.format_trade),houseItem.get거래금액()));
+        } else {
+            holder.price.setText(String.format(Locale.KOREA, context.getString(R.string.format_trade), houseItem.get거래금액()));
         }
         holder.location.setText(String.format(Locale.KOREA, context.getString(R.string.format_address), houseItem.get시군구명(), houseItem.get법정동(), houseItem.get건물명(), houseItem.get층()));
 
@@ -106,20 +98,62 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseViewHolder> {
 
     @Override
     public int getItemCount() {
-        return houseItems.size();
+        return selectHouseItem.size();
     }
 
     public void setHouseItems(ArrayList<HouseItem> houseItems) {
         this.houseItems = houseItems;
-        notifyDataSetChanged();
+        updateList();
     }
 
     public void addHouseItems(ArrayList<HouseItem> houseItems) {
         this.houseItems.addAll(houseItems);
+        updateList();
+    }
+
+    public void updateList() {
+        selectHouseItem.clear();
+
+        if (monthCheck) {
+            for (HouseItem houseItem : houseItems) {
+                if (houseItem.get보증금() > 0 || houseItem.get월세금액() > 0) {
+                    if (houseItem.get월세금액() > 0) {
+                        selectHouseItem.add(houseItem);
+                    }
+                }
+            }
+        }
+
+        if (yearCheck) {
+            for (HouseItem houseItem : houseItems) {
+                if (houseItem.get보증금() > 0 || houseItem.get월세금액() > 0) {
+                    if (!(houseItem.get월세금액() > 0)) {
+                        selectHouseItem.add(houseItem);
+                    }
+                }
+            }
+        }
+
+        if (tradeCheck) {
+            for (HouseItem houseItem : houseItems) {
+                if (!(houseItem.get보증금() > 0 || houseItem.get월세금액() > 0)) {
+                    selectHouseItem.add(houseItem);
+                }
+            }
+        }
+
         notifyDataSetChanged();
     }
 
-    public void setCheck(){
-        notifyDataSetChanged();
+    public void setShowMonth(boolean monthCheck) {
+        this.monthCheck = monthCheck;
+    }
+
+    public void setShowYear(boolean yearCheck) {
+        this.yearCheck = yearCheck;
+    }
+
+    public void setShowTrade(boolean tradeCheck) {
+        this.tradeCheck = tradeCheck;
     }
 }
