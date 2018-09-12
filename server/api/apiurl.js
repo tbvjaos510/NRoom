@@ -141,7 +141,7 @@ class Bus {
     static get BusAPI() { return "http://openapi.tago.go.kr/openapi/service/BusSttnInfoInqireService/" }
 
     static getBusInPos(lat, lng) {
-        return this.BusAPI+`getCrdntPrxmtSttnList?serviceKey=${apikey}&gpsLati=${lat}&gpsLong=${lng}`
+        return this.BusAPI+`getCrdntPrxmtSttnList?serviceKey=${apikey}&gpsLati=${lng}&gpsLong=${lat}`
     }
 }
 module.exports.Home = Home
