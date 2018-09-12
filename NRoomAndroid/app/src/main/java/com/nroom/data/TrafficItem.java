@@ -1,12 +1,12 @@
 package com.nroom.data;
 
-public class TraficItem {
+public class TrafficItem {
 
     private double lat;
     private double lng;
     private String nodenm;
 
-    public TraficItem(double lat, double lng, String nodenm) {
+    public TrafficItem(double lat, double lng, String nodenm) {
         this.lat = lat;
         this.lng = lng;
         this.nodenm = nodenm;
