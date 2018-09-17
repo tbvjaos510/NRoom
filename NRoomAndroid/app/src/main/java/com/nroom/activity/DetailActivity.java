@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.github.mikephil.charting.charts.LineChart;
 import com.nroom.R;
 import com.nroom.viewpager.ImagePagerAdapter;
-import com.nroom.viewpager.InfoPagerAdapter;
+import com.nroom.viewpager.InfoFragmentPagerAdapter;
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
 import androidx.appcompat.app.ActionBar;
@@ -26,7 +26,6 @@ public class DetailActivity extends BaseActivity {
     private TextView area;
     private TextView adminExp;
     private TextView structure;
-    private LineChart chart;
     private TextView detailSummary;
 
     @Override
@@ -39,7 +38,6 @@ public class DetailActivity extends BaseActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowHomeEnabled(true);
-            actionBar.setDisplayShowTitleEnabled(false);
         }
 
         initViews();
@@ -69,7 +67,6 @@ public class DetailActivity extends BaseActivity {
         area = findViewById(R.id.area);
         adminExp = findViewById(R.id.admin_exp);
         structure = findViewById(R.id.structure);
-        chart = findViewById(R.id.chart);
         detailSummary = findViewById(R.id.detail_summary);
     }
 
@@ -77,6 +74,8 @@ public class DetailActivity extends BaseActivity {
         Intent intent = getIntent();
         viewPagerToolbar.setAdapter(new ImagePagerAdapter(this, intent.getIntArrayExtra("images")));
         wormDotsIndicatorToolbar.setViewPager(viewPagerToolbar);
+
+        setTitle(intent.getStringExtra("name"));
 
         String structureData = intent.getStringExtra("structure");
         if (structureData.equals("1")) {
@@ -98,7 +97,7 @@ public class DetailActivity extends BaseActivity {
         detailSummary.setText(intent.getStringExtra("detail_summary"));
 
 
-        viewPager.setAdapter(new InfoPagerAdapter(this, intent.getDoubleExtra("lng", 0), intent.getDoubleExtra("lat", 0)));
+        viewPager.setAdapter(new InfoFragmentPagerAdapter(getSupportFragmentManager(), intent.getDoubleExtra("lng", 0), intent.getDoubleExtra("lat", 0)));
         wormDotsIndicator.setViewPager(viewPager);
     }
 }

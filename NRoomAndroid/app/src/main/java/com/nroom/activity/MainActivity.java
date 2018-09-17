@@ -2,7 +2,6 @@ package com.nroom.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -26,7 +25,7 @@ public class MainActivity extends BaseActivity {
         setSupportActionBar(findViewById(R.id.toolbar));
         Button btnMap = findViewById(R.id.btnMap);
         btnMap.setOnClickListener(view -> {
-            Intent intent = new Intent(this, MapActivity.class);
+            Intent intent = new Intent(this, MapsActivity.class);
             startActivity(intent);
         });
 
@@ -47,7 +46,7 @@ public class MainActivity extends BaseActivity {
         mAdView.loadAd(builder.build());
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
@@ -62,7 +61,7 @@ public class MainActivity extends BaseActivity {
                 return true;
         }
         return false;
-    }
+    }*/
 
     @Override
     protected void onDestroy() {

@@ -1,4 +1,4 @@
-package com.nroom.recyclerview;
+package com.nroom.recycler;
 
 import android.content.Context;
 import android.content.Intent;
@@ -47,21 +47,14 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseViewHolder> {
         HouseItem houseItem = selectHouseItem.get(position);
 
         holder.image.setImageDrawable(houseItem.getImage());
-        if (houseItem.get보증금() > 0 || houseItem.get월세금액() > 0) {
-            if (houseItem.get월세금액() > 0) {
-                holder.price.setText(String.format(Locale.KOREA, context.getString(R.string.format_month), houseItem.get보증금(), houseItem.get월세금액()));
-            } else {
-                holder.price.setText(String.format(Locale.KOREA, context.getString(R.string.format_year), houseItem.get보증금()));
-            }
-        } else {
-            holder.price.setText(String.format(Locale.KOREA, context.getString(R.string.format_trade), houseItem.get거래금액()));
-        }
+        holder.price.setText(StaticResources.getPrice(houseItem, context));
         holder.location.setText(String.format(Locale.KOREA, context.getString(R.string.format_address), houseItem.get시군구명(), houseItem.get법정동(), houseItem.get건물명(), houseItem.get층()));
 
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(context, DetailActivity.class);
-            intent.putExtra("images", getImages((position + 1) % 5));
+            intent.putExtra("images", StaticResources.getImages((position + 1) % 5));
             intent.putExtra("summary", "요약");
+            intent.putExtra("name", houseItem.get건물명());
             intent.putExtra("price", holder.price.getText());
             intent.putExtra("sale_id", houseItem.getId());
             intent.putExtra("area", houseItem.get전용면적());
@@ -74,29 +67,6 @@ public class HouseAdapter extends RecyclerView.Adapter<HouseViewHolder> {
 
             context.startActivity(intent);
         });
-    }
-
-    private int[] getImages(int i) {
-        int[] images = new int[0];
-        switch (i) {
-            case 0:
-                images = StaticResources.aptImages;
-                break;
-            case 1:
-                images = StaticResources.oneImages1;
-                break;
-            case 2:
-                images = StaticResources.oneImages2;
-                break;
-            case 3:
-                images = StaticResources.oneImages3;
-                break;
-            case 4:
-                images = StaticResources.oneImages4;
-                break;
-        }
-
-        return images;
     }
 
     @Override

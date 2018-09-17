@@ -6,15 +6,14 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:navigationBarColor">@color/colorPrimary</item>
         <item name="android:fontFamily">@font/bm_jua_font</item>
         <item name="fontFamily">@font/bm_jua_font</item>
     </style>
 
     <style name="AppTheme.Transparent">
         <item name="android:statusBarColor">@color/transparent_darker</item>
-        <item name="android:navigationBarColor">@color/transparent_dark</item>
-        <item name="android:windowTranslucentNavigation">true</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
 </resources>

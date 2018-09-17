@@ -1,4 +1,4 @@
-package com.nroom.recyclerview;
+package com.nroom.recycler;
 
 import android.view.View;
 import android.widget.ImageView;
