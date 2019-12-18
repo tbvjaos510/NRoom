@@ -54,9 +54,6 @@ public class ChartFragment extends Fragment {
         chart.getAxisRight().setEnabled(false);
 
         chart.getXAxis().setEnabled(false);
-
-        // animate calls invalidate()...
-        chart.animateX(500);
     }
 
     private LineData makeDummy(int count, float range) {

@@ -1,23 +1,16 @@
 package com.nroom.activity;
 
-import android.location.Location;
-import android.location.LocationListener;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
 
 import com.nroom.R;
-import com.nroom.data.HouseItem;
+import com.nroom.data.StaticResources;
 import com.nroom.network.JSONTask;
-import com.nroom.network.JSONTaskTraffic;
-import com.nroom.recyclerview.HouseAdapter;
-
-import java.util.ArrayList;
+import com.nroom.recycler.HouseAdapter;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -51,17 +44,17 @@ public class ListActivity extends BaseActivity {
             if (selectedCondition.equals("전체")) {
                 new JSONTask(this).setTaskListener(houseList ->  {
                     houseAdapter.setHouseItems(houseList);
-                }).execute("http://10.80.161.54:80/api/juntrade?시도명=" + local);
+                }).execute(StaticResources.HOST + "/api/juntrade?시도명=" + local);
                 new JSONTask(this).setTaskListener(houseList ->  {
                     houseAdapter.addHouseItems(houseList);
-                }).execute("http://10.80.161.54:80/api/realtrade?시도명=" + local);
+                }).execute(StaticResources.HOST + "/api/realtrade?시도명=" + local);
             } else {
                 new JSONTask(this).setTaskListener(houseList ->  {
                     houseAdapter.setHouseItems(houseList);
-                }).execute("http://10.80.161.54:80/api/juntrade?시도명=" + local + "&검색조건=" + selectedCondition);
+                }).execute(StaticResources.HOST + "/api/juntrade?시도명=" + local + "&검색조건=" + selectedCondition);
                 new JSONTask(this).setTaskListener(houseList ->  {
                     houseAdapter.addHouseItems(houseList);
-                }).execute("http://10.80.161.54:80/api/realtrade?시도명=" + local + "&검색조건=" + selectedCondition);
+                }).execute(StaticResources.HOST + "/api/realtrade?시도명=" + local + "&검색조건=" + selectedCondition);
             }
         }
     }

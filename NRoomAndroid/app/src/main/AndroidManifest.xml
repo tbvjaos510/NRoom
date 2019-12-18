@@ -27,20 +27,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.MapActivity"
+            android:name=".activity.MapsActivity"
             android:theme="@style/AppTheme.Transparent" />
         <activity android:name=".activity.ListActivity" />
-        <activity android:name=".activity.DetailActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".activity.DetailActivity" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDDJmtTUJkHzHxWnMZEx7MdiYIjrStWH2s" />
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-3072268700543290~9298958419" />
 
     </application>
+
 </manifest>

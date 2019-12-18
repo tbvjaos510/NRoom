@@ -15,4 +15,6 @@
     <string name="format_month">월세 %1$d / %2$d</string>
     <string name="format_trade">매매 %1$s</string>
     <string name="format_address">%1$s %2$s %3$s, %4$s층</string>
+    <string name="bus_stop">정류장</string>
+    <string name="metro_station">지하철</string>
 </resources>
